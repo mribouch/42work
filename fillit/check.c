@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mribouch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 13:00:48 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/25 13:26:47 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/28 15:37:42 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,46 +47,51 @@ int		ft_eachblock(int nbl)
 	return (0);
 }
 
+int		ft_parse_line(int nbl, int nbblock, char *line)
+{
+	int	i;
+
+	i = 0;
+	if (ft_eachblock(nbl) == 1)
+	{
+		if (ft_strlen(line) > 0)
+			return (-1);
+		nbblock = 0;
+	}
+	else if (ft_eachblock(nbl) == 0)
+	{
+		if (ft_strlen(line) != 4)
+			return (-1);
+		while (line[i] != '\0')
+		{
+			if (line[i] == '#')
+				nbblock++;
+			if (line[i] != '.' && line[i] != '#')
+				return (-1);
+			i++;
+		}
+	}
+	return (nbblock);
+}
+
 char	*ft_tetrisvalid(int fd)
 {
 	char	*line;
 	int		nbblock;
-	int		i;
 	int		nbl;
 	char	*full;
 
 	nbblock = 0;
-	i = 0;
 	nbl = 0;
 	full = ft_strnew(1);
 	while (get_next_line(fd, &line))
 	{
 		nbl++;
-		i = 0;
-		if (ft_eachblock(nbl) == 1)
-		{
-			if (ft_strlen(line) > 0)
-				return (0);
-			nbblock = 0;
-		}
-		else if (ft_eachblock(nbl) == 0)
-		{
-			if (ft_strlen(line) != 4)
-				return (0);
-			while (line[i] != '\0')
-			{
-				if (line[i] == '#')
-					nbblock++;
-				if (line[i] != '.' && line[i] != '#')
-					return (0);
-				i++;
-			}
-		}
+		if ((nbblock = ft_parse_line(nbl, nbblock, line)) == -1)
+			return (0);
 		if (ft_end_tetri(nbl) == 1)
-		{
 			if (nbblock != 4)
 				return (0);
-		}
 		full = ft_strjoin(full, line);
 		full = ft_strjoin(full, "\n");
 	}
