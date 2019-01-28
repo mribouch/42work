@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mribouch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 13:06:53 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/25 13:27:27 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/28 19:14:08 by myener           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ char	**ft_solve(char **map, t_tetri *begin, int s_map)
 	ft_put_up_left(begin);
 	while (ft_rec_place(begin, map, s_map) == 0)
 	{
+		ft_free_map(map, s_map);
 		s_map++;
 		map = ft_create_map(s_map);
 		begin->x = 0;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mribouch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 12:30:28 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/23 16:18:59 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/28 19:50:31 by myener           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	ft_num_tetri(char *str)
+int			ft_num_tetri(char *str)
 {
 	int	nbc;
 	int	sep;
@@ -30,7 +30,7 @@ int	ft_num_tetri(char *str)
 	return (nbc / 20);
 }
 
-int	ft_sqrt_fillit(int nb)
+int			ft_sqrt_fillit(int nb)
 {
 	int	res;
 	int i;
@@ -48,5 +48,57 @@ int	ft_sqrt_fillit(int nb)
 		if (i == 50000)
 			return (0);
 	}
+	return (i);
+}
+
+char		*ft_free_join(char *s1, const char *s2)
+{
+	char	*s3;
+	int		i;
+	int		j;
+
+	if (!s1 || !s2)
+		return (NULL);
+	if (!(s3 = ft_strnew(ft_strlen(s1) + ft_strlen(s2))))
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		s3[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		s3[i] = s2[j];
+		i++;
+		j++;
+	}
+	s3[i] = '\0';
+	ft_strdel(&s1);
+	return (s3);
+}
+
+void	ft_free_map(char **map, int s_map)
+{
+	int	i;
+
+	i = 0;
+	while (i < s_map)
+	{
+		ft_strdel(&map[i]);
+		i++;
+	}
+	ft_strdel(map);
+}
+
+int		ft_get_map_line(char **map)
+{
+	int	i;
+	int	nbl;
+
+	i = 0;
+	while (map[0][i] != '\0')
+		i++;
 	return (i);
 }

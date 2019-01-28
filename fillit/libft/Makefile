@@ -6,7 +6,7 @@
 #    By: myener <myener@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 17:52:35 by myener            #+#    #+#              #
-#    Updated: 2018/11/29 14:46:32 by myener           ###   ########.fr        #
+#    Updated: 2019/01/28 17:19:51 by myener           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,8 @@ SRC = ft_atoi.c\
 	  ft_strjoin.c\
 	  ft_strsplit.c\
 	  ft_strtrim.c\
-	  ft_strrev.c
+	  ft_strrev.c\
+	  get_next_line.c\
 
 
 HEADERS = libft.h

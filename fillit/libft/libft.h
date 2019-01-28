@@ -6,7 +6,7 @@
 /*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 13:57:15 by myener            #+#    #+#             */
-/*   Updated: 2019/01/23 17:23:30 by myener           ###   ########.fr       */
+/*   Updated: 2019/01/28 17:15:24 by myener           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-
 
 typedef struct	s_list
 {

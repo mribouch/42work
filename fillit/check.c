@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 13:00:48 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/28 15:37:42 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/28 19:27:23 by myener           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,20 +80,23 @@ char	*ft_tetrisvalid(int fd)
 	int		nbblock;
 	int		nbl;
 	char	*full;
+	char	*tmp;
 
 	nbblock = 0;
 	nbl = 0;
 	full = ft_strnew(1);
 	while (get_next_line(fd, &line))
 	{
+		tmp = line;
 		nbl++;
 		if ((nbblock = ft_parse_line(nbl, nbblock, line)) == -1)
 			return (0);
 		if (ft_end_tetri(nbl) == 1)
 			if (nbblock != 4)
 				return (0);
-		full = ft_strjoin(full, line);
-		full = ft_strjoin(full, "\n");
+		full = ft_free_join(full, line);
+		full = ft_free_join(full, "\n");
+		free(tmp);
 	}
 	if (ft_end_tetri(nbl) == 0)
 		return (0);

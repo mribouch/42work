@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mribouch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 12:51:34 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/24 17:14:20 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/28 19:31:55 by myener           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ t_tetri	*ft_get_tetriminos(char *str)
 {
 	t_tetri	*tetris;
 	t_tetri	*ret;
+	char	*tmp;
 	char	letter;
 	int		nbt;
 
@@ -120,14 +121,20 @@ t_tetri	*ft_get_tetriminos(char *str)
 	tetris = ft_create_tetri(ft_get_str(str), letter++, ft_get_width(str)
 			, ft_get_height(str));
 	ret = tetris;
+	tmp = str;
 	str = ft_strsub(str, 21, ft_strlen(str));
+	free(tmp);
 	while (nbt != 0)
 	{
 		tetris->next = ft_create_tetri(ft_get_str(str), letter++,
 				ft_get_width(str), ft_get_height(str));
 		tetris = tetris->next;
 		if (nbt-- >= 1)
+		{
+			tmp = str;
 			str = ft_strsub(str, 21, ft_strlen(str));
+			free(tmp);
+		}
 	}
 	return (ret);
 }

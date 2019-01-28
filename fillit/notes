@@ -1,0 +1,5 @@
+Dans le main, apres avoir print la map : 
+> free la map
+> free les tetriminos dans la liste chainé
+> free toute la liste chainé 
+(on peut essayer de free les tetri directement en free la liste)
