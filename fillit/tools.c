@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 12:30:28 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/28 19:50:31 by myener           ###   ########.fr       */
+/*   Updated: 2019/01/29 13:50:49 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,12 @@ char		*ft_free_join(char *s1, const char *s2)
 	return (s3);
 }
 
-void	ft_free_map(char **map, int s_map)
+void	ft_free_map(char **map)
 {
 	int	i;
+	int s_map;
 
+	s_map = ft_get_map_line(map);
 	i = 0;
 	while (i < s_map)
 	{
@@ -95,10 +97,18 @@ void	ft_free_map(char **map, int s_map)
 int		ft_get_map_line(char **map)
 {
 	int	i;
-	int	nbl;
+	int	j;
 
 	i = 0;
-	while (map[0][i] != '\0')
+	j = 0;
+	while (map[i] != NULL)
+	{
+		while (map[i][j] != '\0')
+			j++;
 		i++;
+		j = 0;
+	}
+	//ft_putnbr(i);
+	//ft_putchar('\n');
 	return (i);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 15:45:54 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/28 19:51:15 by myener           ###   ########.fr       */
+/*   Updated: 2019/01/29 13:34:48 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_tetri			*ft_put_up_left(t_tetri *begin);
 char			**ft_solve(char **map, t_tetri *begin, int s_map);
 int				ft_end_tetri(int nbl);
 char			*ft_free_join(char *s1, const char *s2);
-void			ft_free_map(char **map, int s_map);
+void			ft_free_map(char **map);
 int				ft_get_map_line(char **map);
 
 #endif
