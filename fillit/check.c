@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 13:00:48 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/28 19:27:23 by myener           ###   ########.fr       */
+/*   Updated: 2019/01/29 16:43:45 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,18 +89,21 @@ char	*ft_tetrisvalid(int fd)
 	{
 		tmp = line;
 		nbl++;
-		if ((nbblock = ft_parse_line(nbl, nbblock, line)) == -1)
+		if ((nbblock = ft_parse_line(nbl, nbblock, line)) == -1
+			|| (ft_end_tetri(nbl) == 1 && nbblock != 4))
+		{
+			free(full);
+			free(tmp);
 			return (0);
-		if (ft_end_tetri(nbl) == 1)
-			if (nbblock != 4)
-				return (0);
+		}
 		full = ft_free_join(full, line);
 		full = ft_free_join(full, "\n");
 		free(tmp);
 	}
-	if (ft_end_tetri(nbl) == 0)
+	if (ft_end_tetri(nbl) == 0 || ft_check_neighbour(full) == 0)
+	{
+		free(full);
 		return (0);
-	if (ft_check_neighbour(full) == 0)
-		return (0);
+	}
 	return (full);
 }

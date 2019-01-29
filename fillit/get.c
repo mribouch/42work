@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 12:51:34 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/29 13:36:24 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/29 16:51:22 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	**ft_get_str(char *str)
 	i = 0;
 	if (!(tetri = malloc(sizeof(char*) * 5)))
 		return (0);
-	while (i <= 4)
+	while (i < 4)
 	{
 		if (!(tetri[i++] = malloc(sizeof(char) * 5)))
 			return (0);
@@ -108,33 +108,42 @@ t_tetri	*ft_create_tetri(char **str, char key, int width, int height)
 	return (tetris);
 }
 
+int		ft_get_map_line(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (map[i] != NULL)
+	{
+		while (map[i][j] != '\0')
+			j++;
+		i++;
+		j = 0;
+	}
+	return (i);
+}
+
 t_tetri	*ft_get_tetriminos(char *str)
 {
 	t_tetri	*tetris;
 	t_tetri	*ret;
-	char	*tmp;
 	char	letter;
 	int		nbt;
 
 	letter = 'A';
 	nbt = ft_num_tetri(str) - 1;
-	tetris = ft_create_tetri(ft_get_str(str), letter++, ft_get_width(str)
-			, ft_get_height(str));
+	tetris = ft_create_tetri(ft_get_str(str), letter++, ft_get_width(str),
+		ft_get_height(str));
 	ret = tetris;
-	tmp = str;
-	str = ft_strsub(str, 21, ft_strlen(str));
-	free(tmp);
-	while (nbt != 0)
+	str += 21;
+	while (nbt-- > 0)
 	{
 		tetris->next = ft_create_tetri(ft_get_str(str), letter++,
 				ft_get_width(str), ft_get_height(str));
 		tetris = tetris->next;
-		if (nbt-- >= 1)
-		{
-			tmp = str;
-			str = ft_strsub(str, 21, ft_strlen(str));
-			free(tmp);
-		}
+		str += 21;
 	}
 	return (ret);
 }

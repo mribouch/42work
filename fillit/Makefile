@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: myener <myener@student.42.fr>              +#+  +:+       +#+         #
+#    By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/15 16:21:39 by mribouch          #+#    #+#              #
-#    Updated: 2019/01/28 16:44:20 by mribouch         ###   ########.fr        #
+#    Updated: 2019/01/29 15:13:18 by mribouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = fillit
 SRCS = main.c check.c check_neighbour.c \
 		tools.c get.c map.c put_up_left.c solver.c
 
-FLAGS = -g -Wall -Wextra -Werror
+FLAGS = -g3 -Wall -Wextra -Werror
 
 all: $(NAME)
 

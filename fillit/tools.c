@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 12:30:28 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/29 13:50:49 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/29 16:51:26 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,28 +87,24 @@ void	ft_free_map(char **map)
 	s_map = ft_get_map_line(map);
 	i = 0;
 	while (i < s_map)
-	{
-		ft_strdel(&map[i]);
-		i++;
-	}
-	ft_strdel(map);
+		free(map[i++]);
+	free(map);
 }
 
-int		ft_get_map_line(char **map)
+void	ft_free_list(t_tetri *list)
 {
-	int	i;
-	int	j;
+	t_tetri *tmp;
 
-	i = 0;
-	j = 0;
-	while (map[i] != NULL)
+	//ft_print_all_lst(list);
+	tmp = list;
+	ft_free_map(list->tetri);
+	list = list->next;
+	free(tmp);
+	while (list != NULL)
 	{
-		while (map[i][j] != '\0')
-			j++;
-		i++;
-		j = 0;
+		tmp = list;
+		ft_free_map(list->tetri);
+		list = list->next;
+		free(tmp);
 	}
-	//ft_putnbr(i);
-	//ft_putchar('\n');
-	return (i);
 }

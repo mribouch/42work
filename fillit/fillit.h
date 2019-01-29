@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 15:45:54 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/29 13:34:48 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/29 15:10:03 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ int				ft_end_tetri(int nbl);
 char			*ft_free_join(char *s1, const char *s2);
 void			ft_free_map(char **map);
 int				ft_get_map_line(char **map);
+void			ft_free_list(t_tetri *list);
+void			ft_print_all_lst(t_tetri *tetris);
 
 #endif
