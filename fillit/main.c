@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 14:44:51 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/30 18:52:39 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/30 23:59:20 by myener           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ int		main(int ac, char **av)
 
 	if (ac != 2)
 		ft_putendl("usage : ./fillit input_file\n");
+	if ((fd = open(av[1], O_RDONLY)) == -1)
+		ft_putendl("error");
 	else
 	{
-		fd = open(av[1], O_RDONLY);
 		if ((all = ft_tetrisvalid(fd)) == 0)
 			ft_putendl("error");
 		else
