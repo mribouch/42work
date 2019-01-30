@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 13:00:48 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/29 21:04:32 by myener           ###   ########.fr       */
+/*   Updated: 2019/01/30 15:54:21 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,36 +74,42 @@ int		ft_parse_line(int nbl, int nbblock, char *line)
 	return (nbblock);
 }
 
+#include <stdio.h>
+
 char	*ft_tetrisvalid(int fd)
 {
 	char	*line;
 	int		nbblock;
 	int		nbl;
 	char	*full;
-	char	*tmp;
+	// char	*tmp;
 
 	nbblock = 0;
 	nbl = 0;
 	full = ft_strnew(1);
-	while (get_next_line(fd, &line))
+	while ((get_next_line(fd, &line)) == 1)
 	{
-		tmp = line;
+		//printf("%s (%d)\n", line, gnl);
+		// tmp = line;
 		nbl++;
 		if ((nbblock = ft_parse_line(nbl, nbblock, line)) == -1
 			|| (ft_end_tetri(nbl) == 1 && nbblock != 4))
 		{
 			free(full);
-			free(tmp);
+			free(line);
 			return (0);
 		}
 		full = ft_free_join(full, line);
 		full = ft_free_join(full, "\n");
-		free(tmp);
+		free(line);
 	}
-	if (ft_end_tetri(nbl) == 0 || ft_check_neighbour(full) == 0)
-	{
-		free(full);
-		return (0);
-	}
+	(void)1;
+	//if (1 caractere plus tot != '/n')
+	//if (ft_end_tetri(nbl) == 0/*|| ft_check_neighbour(full) == 0*/)
+	//{
+	//	free(full);
+	//	return (0);
+	//}
+	// ft_putstr(full);
 	return (full);
 }

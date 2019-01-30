@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_neighbour.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:09:32 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/29 21:12:39 by myener           ###   ########.fr       */
+/*   Updated: 2019/01/30 15:48:23 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ static int	ft_check_connect(char *str)
 		(str[i] == '#' && str[i + 1] == '#') ? nbc++ : 0;
 		if (str[i] == '#' && str[i + 5] == '#' && ft_end_tetri(nbl) == 0)
 			nbc++;
-		(str[i] == '#' && str[i - 1] == '#') ? nbc++ : 0;
+		if (i > 0 && str[i] == '#' && str[i - 1] == '#')
+		{
+			nbc++;
+		}
 		if (str[i] == '#' && str[i - 5] == '#' && ft_newblock(nbl) == 0)
 			nbc++;
 		i++;

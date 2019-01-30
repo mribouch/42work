@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: myener <myener@student.42.fr>              +#+  +:+       +#+         #
+#    By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/15 16:21:39 by mribouch          #+#    #+#              #
-#    Updated: 2019/01/29 21:32:07 by myener           ###   ########.fr        #
+#    Updated: 2019/01/30 15:53:05 by mribouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,9 @@ all: $(NAME)
 
 $(NAME):
 	make -C libft/
-	gcc $(FLAGS) -c $(SRCS)
+	gcc $(FLAGS) -c $(SRCS) #-fsanitize=address -g
 	gcc $(FLAGS) check.o check_neighbour.o main.o \
-	libft/libft.a tools.o get.o map.o put_up_left.o solver.o -o $(NAME)
+	libft/libft.a tools.o get.o map.o put_up_left.o solver.o -o $(NAME) #-fsanitize=address -g
 
 clean:
 	rm -f check.o check_neighbour.o main.o tools.o get.o map.o \

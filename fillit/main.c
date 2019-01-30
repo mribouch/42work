@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 14:44:51 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/29 20:59:48 by myener           ###   ########.fr       */
+/*   Updated: 2019/01/30 15:04:57 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		main(int ac, char **av)
 	char	**map;
 
 	if (ac != 2)
-		ft_putendl("usage : ./fillit input_file\n");
+		ft_putendl("usage : ./fillit input_file");
 	else
 	{
 		fd = open(av[1], O_RDONLY);
