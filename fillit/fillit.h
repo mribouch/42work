@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 15:45:54 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/29 21:02:35 by myener           ###   ########.fr       */
+/*   Updated: 2019/01/30 18:29:58 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ typedef struct	s_tetri
 {
 	char			**tetri;
 	char			key;
-	//int				width;
-	//int				height;
 	int				x;
 	int				y;
 	struct s_tetri	*next;

@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 12:30:28 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/30 15:44:44 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/30 18:32:36 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char		*ft_free_join(char *s1, const char *s2)
 	return (s3);
 }
 
-void	ft_free_map(char **map)
+void		ft_free_map(char **map)
 {
 	int	i;
 	int s_map;
@@ -87,7 +87,7 @@ void	ft_free_map(char **map)
 	free(map);
 }
 
-void	ft_free_list(t_tetri *list)
+void		ft_free_list(t_tetri *list)
 {
 	t_tetri *tmp;
 
