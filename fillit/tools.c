@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 12:30:28 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/29 16:51:26 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/29 21:20:55 by myener           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int			ft_num_tetri(char *str)
 
 	i = 0;
 	sep = 0;
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		if (str[i] == '\n' && str[i + 1] == '\n')
 			sep++;
@@ -69,11 +69,7 @@ char		*ft_free_join(char *s1, const char *s2)
 	}
 	j = 0;
 	while (s2[j])
-	{
-		s3[i] = s2[j];
-		i++;
-		j++;
-	}
+		s3[i++] = s2[j++];
 	s3[i] = '\0';
 	ft_strdel(&s1);
 	return (s3);
@@ -95,7 +91,6 @@ void	ft_free_list(t_tetri *list)
 {
 	t_tetri *tmp;
 
-	//ft_print_all_lst(list);
 	tmp = list;
 	ft_free_map(list->tetri);
 	list = list->next;

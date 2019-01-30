@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_up_left.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mribouch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 12:16:59 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/23 14:31:36 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/29 21:31:11 by myener           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,11 @@ char	**ft_put_up(char **tetri, int ymin)
 		while (j < 4)
 		{
 			if (ymin != 0)
-			{
 				if (tetri[i][j] == '#')
 				{
 					tetri[i][j] = '.';
 					tetri[i - ymin][j] = '#';
 				}
-			}
 			j++;
 		}
 		j = 0;
@@ -99,13 +97,11 @@ char	**ft_put_left(char **tetri, int xmin)
 		while (j < 4)
 		{
 			if (tetri[i][j] == '#')
-			{
 				if (j != 0)
 				{
 					tetri[i][j] = '.';
 					tetri[i][j - xmin] = '#';
 				}
-			}
 			j++;
 		}
 		j = 0;
