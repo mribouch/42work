@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 13:06:53 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/29 16:33:50 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/29 21:25:23 by myener           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**ft_remove(t_tetri *begin, char **map)
 	j = 0;
 	while (map[i] != NULL)
 	{
-		while (map[i][j] != '\0')
+		while (map[i][j])
 		{
 			if (map[i][j] == begin->key)
 				map[i][j] = '.';
@@ -65,10 +65,10 @@ int		ft_check_place(t_tetri *begin, char **map, int s_map)
 	{
 		while (j < 4)
 		{
-			if ((begin->tetri[i][j] == '#') && \
+			if ((begin->tetri[i][j] == '#') &&
 					(i + begin->y >= s_map || j + begin->x >= s_map))
 				return (0);
-			if (begin->tetri[i][j] == '#' && \
+			if (begin->tetri[i][j] == '#' &&
 					map[i + begin->y][j + begin->x] != '.')
 				return (0);
 			j++;

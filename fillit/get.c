@@ -3,67 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 12:51:34 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/29 16:51:22 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/29 21:02:20 by myener           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-int		ft_get_height(char *str)
-{
-	int	i;
-	int	line;
-	int	max;
-	int	min;
-
-	line = 1;
-	i = 0;
-	min = 4;
-	max = 1;
-	while (i <= 19)
-	{
-		if (i == 5 || i == 10 || i == 15)
-			line++;
-		if (str[i++] == '#')
-		{
-			if (min > line)
-				min = line;
-			if (max < line)
-				max = line;
-		}
-	}
-	return (max - min + 1);
-}
-
-int		ft_get_width(char *str)
-{
-	int	i;
-	int	min;
-	int max;
-	int	lim;
-
-	i = 0;
-	min = 4;
-	max = 1;
-	lim = 1;
-	while (i <= 19)
-	{
-		if (i == 4 || i == 9 || i == 14 || i == 19)
-			lim = 0;
-		if (str[i++] == '#')
-		{
-			if (min > lim)
-				min = lim;
-			if (max < lim)
-				max = lim;
-		}
-		lim++;
-	}
-	return (max - min + 1);
-}
 
 char	**ft_get_str(char *str)
 {
@@ -76,10 +23,8 @@ char	**ft_get_str(char *str)
 	if (!(tetri = malloc(sizeof(char*) * 5)))
 		return (0);
 	while (i < 4)
-	{
 		if (!(tetri[i++] = malloc(sizeof(char) * 5)))
 			return (0);
-	}
 	i = 0;
 	j = 0;
 	while (i <= 19 && (k = -1))
@@ -93,15 +38,13 @@ char	**ft_get_str(char *str)
 	return (tetri);
 }
 
-t_tetri	*ft_create_tetri(char **str, char key, int width, int height)
+t_tetri	*ft_create_tetri(char **str, char key)
 {
 	t_tetri *tetris;
 
 	tetris = ft_memalloc(sizeof(t_tetri));
 	tetris->tetri = str;
 	tetris->key = key;
-	tetris->width = width;
-	tetris->height = height;
 	tetris->x = 0;
 	tetris->y = 0;
 	tetris->next = NULL;
@@ -134,14 +77,12 @@ t_tetri	*ft_get_tetriminos(char *str)
 
 	letter = 'A';
 	nbt = ft_num_tetri(str) - 1;
-	tetris = ft_create_tetri(ft_get_str(str), letter++, ft_get_width(str),
-		ft_get_height(str));
+	tetris = ft_create_tetri(ft_get_str(str), letter++);
 	ret = tetris;
 	str += 21;
 	while (nbt-- > 0)
 	{
-		tetris->next = ft_create_tetri(ft_get_str(str), letter++,
-				ft_get_width(str), ft_get_height(str));
+		tetris->next = ft_create_tetri(ft_get_str(str), letter++);
 		tetris = tetris->next;
 		str += 21;
 	}
