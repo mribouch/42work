@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 13:00:48 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/30 18:42:41 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/31 11:51:55 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,5 @@ char	*ft_tetrisvalid(int fd)
 		full = ft_free_join(full, "\n");
 		free(tmp);
 	}
-	return (ft_spacesavior(nbl, full));//sur un malentendu
+	return (ft_spacesavior(nbl, full));
 }

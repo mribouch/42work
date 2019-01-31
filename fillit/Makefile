@@ -6,13 +6,23 @@
 #    By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/15 16:21:39 by mribouch          #+#    #+#              #
-#    Updated: 2019/01/30 18:51:54 by mribouch         ###   ########.fr        #
+#    Updated: 2019/01/31 12:16:29 by mribouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fillit
+MAKE	:= make
+CC		:= gcc
+LD		:= gcc
+RM		:= rm -rf
 
-SRCS	=	main.c				\
+SRCDIR	:=	./
+INCLDIR	:=	-I libft/includes
+LIBDIR 	:=	libft/
+
+CFLAGS	:=	-Wall -Wextra -Werror $(INCLDIR)
+LDFLAGS	:=	-L$(LIBDIR) -lft
+
+SRCS    :=	main.c				\
 			check.c				\
 			check_neighbour.c	\
 			tools.c				\
@@ -20,30 +30,37 @@ SRCS	=	main.c				\
 			map.c				\
 			put_up_left.c		\
 			solver.c
-OBJS	=	$(SRCS:.c=.o)
+SRCS	:=	$(addprefix $(SRCDIR)/, $(SRCS))
+OBJS	:=	$(patsubst %.c,%.o,$(SRCS))
+DEPS	:=	Makefile fillit.h
+LIB		:=	$(LIBDIR)/libft.a
+NAME	:=	fillit
 
-FLAGS			=	-Wall -Wextra -Werror
-LIBFT_FOLDER	=	libft
+all: $(NAME)
 
-all: libft $(NAME)
+$(LIB):
+	@$(MAKE) -C libft/
 
-$(NAME): $(OBJS)
-	gcc $(FLAGS) $(OBJS) -o $(NAME) -I $(LIBFT_FOLDER) $(LIBFT_FOLDER)/libft.a
+$(NAME): $(LIB) $(OBJS)
+	@echo "\033[32m  Creating: \033[0m$(NAME)"
+	@$(LD) $(LDFLAGS) -o $(NAME) $(OBJS)
 
-.c.o: $(SRCS)
-	gcc -c $< -o $@ $(FLAGS)
-
-libft:
-	make -C libft
+%.o: %.c $(DEPS)
+	@printf "\033[32m Compiling: \033[0m$< -> $@\n"
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
-	make clean -C libft/
+	@printf "\033[32m  Cleaning: \033[0m$(OBJS)\033[0m\n"
+	@$(RM) $(OBJS)
+	@$(MAKE) -C libft clean
 
 fclean: clean
-	rm -f $(NAME)
-	make fclean -C libft/
+	@printf "\033[32m  Removing: \033[0m"
+	@find . -name "fillit" -exec sh -c 'basename {}' \; | tr "\n" " "
+	@echo ""
+	@$(RM) $(NAME)
+	@$(MAKE) -C libft fclean
 
 re: fclean all
 
-.PHONY: libft clean fclean re
+.PHONY: all clean fclean re
