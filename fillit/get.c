@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 12:51:34 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/30 18:29:57 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/31 15:21:30 by myener           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ int		ft_get_map_line(char **map)
 	while (map[i] != NULL)
 	{
 		while (map[i][j] != '\0')
+		{
 			j++;
+		}
 		i++;
 		j = 0;
 	}

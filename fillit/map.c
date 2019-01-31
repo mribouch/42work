@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 13:43:12 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/30 18:29:54 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/31 15:24:18 by myener           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_print_map(char **map)
 	}
 }
 
-int		ft_get_map_size(char *str)
+int		ft_map_size(char *str)
 {
 	int	res;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 15:45:54 by mribouch          #+#    #+#             */
-/*   Updated: 2019/01/31 12:16:14 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/01/31 15:25:47 by myener           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_tetri			*ft_get_tetriminos(char *str);
 int				ft_sqrt_fillit(int nb);
 void			ft_print_map(char **map);
 char			**ft_create_map(int size_m);
-int				ft_get_map_size(char *str);
+int				ft_map_size(char *str);
 t_tetri			*ft_put_up_left(t_tetri *begin);
 char			**ft_solve(char **map, t_tetri *begin, int s_map);
 int				ft_end_tetri(int nbl);
