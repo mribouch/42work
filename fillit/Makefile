@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+         #
+#    By: myener <myener@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/15 16:21:39 by mribouch          #+#    #+#              #
-#    Updated: 2019/01/31 12:16:29 by mribouch         ###   ########.fr        #
+#    Updated: 2019/02/04 16:03:35 by myener           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ LD		:= gcc
 RM		:= rm -rf
 
 SRCDIR	:=	./
-INCLDIR	:=	-I libft/includes
+OBJDIR	:=	./objs
+INCLDIR	:=	-I./libft
 LIBDIR 	:=	libft/
 
 CFLAGS	:=	-Wall -Wextra -Werror $(INCLDIR)
@@ -30,36 +31,37 @@ SRCS    :=	main.c				\
 			map.c				\
 			put_up_left.c		\
 			solver.c
-SRCS	:=	$(addprefix $(SRCDIR)/, $(SRCS))
-OBJS	:=	$(patsubst %.c,%.o,$(SRCS))
-DEPS	:=	Makefile fillit.h
+
+OBJS	:=	$(addprefix $(OBJDIR)/,$(SRCS:.c=.o))
+SRCS	:=	$(addprefix $(SRCDIR)/,$(SRCS))
 LIB		:=	$(LIBDIR)/libft.a
 NAME	:=	fillit
+
+$(NAME): $(LIB) $(OBJS)
+	@printf "\e[32m  Creating: \e[0m$(NAME)\n"
+	@$(LD) $(LDFLAGS) -o $(NAME) $(OBJS)
 
 all: $(NAME)
 
 $(LIB):
-	@$(MAKE) -C libft/
+	$(MAKE) -C libft/
 
-$(NAME): $(LIB) $(OBJS)
-	@echo "\033[32m  Creating: \033[0m$(NAME)"
-	@$(LD) $(LDFLAGS) -o $(NAME) $(OBJS)
-
-%.o: %.c $(DEPS)
-	@printf "\033[32m Compiling: \033[0m$< -> $@\n"
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	@printf "\e[32m Compiling: \e[0m$< -> $@\n"
+	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@printf "\033[32m  Cleaning: \033[0m$(OBJS)\033[0m\n"
-	@$(RM) $(OBJS)
-	@$(MAKE) -C libft clean
+	@printf "\e[32m  Cleaning: \e[0m$(OBJDIR)\e[0m\n"
+	@$(RM) $(OBJDIR)
+	$(MAKE) -C libft clean
 
 fclean: clean
-	@printf "\033[32m  Removing: \033[0m"
+	@printf "\e[32m  Removing: \e[0m"
 	@find . -name "fillit" -exec sh -c 'basename {}' \; | tr "\n" " "
 	@echo ""
 	@$(RM) $(NAME)
-	@$(MAKE) -C libft fclean
+	$(MAKE) -C libft fclean
 
 re: fclean all
 

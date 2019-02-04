@@ -6,17 +6,17 @@
 /*   By: myener <myener@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 15:45:54 by mribouch          #+#    #+#             */
-/*   Updated: 2019/02/02 15:31:19 by myener           ###   ########.fr       */
+/*   Updated: 2019/02/04 15:41:57 by myener           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
-
 # define FILLIT_H
-# include "libft/libft.h"
+
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include "libft.h"
 
 typedef struct	s_tetri
 {
