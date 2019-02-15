@@ -6,13 +6,13 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 18:26:18 by mribouch          #+#    #+#             */
-/*   Updated: 2019/02/15 12:50:06 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/02/15 18:53:43 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-/*void    ft_draw(t_window *infos)
+void    ft_draw(t_window *infos)
 {
     int     i;
     int     j;
@@ -40,9 +40,9 @@
         j = 0;
         i++;
     }
-}*/
+}
 
-void    ft_draw(t_window *infos)
+/*void    ft_draw(t_window *infos)
 {
     int     i;
     int     j;
@@ -70,4 +70,4 @@ void    ft_draw(t_window *infos)
         j = 0;
         i++;
     }
-}
+}*/

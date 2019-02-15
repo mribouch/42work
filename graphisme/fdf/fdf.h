@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 15:34:57 by mribouch          #+#    #+#             */
-/*   Updated: 2019/02/13 14:12:03 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/02/15 15:32:21 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@
 
 typedef struct  s_point
 {
-    int             x;
-    int             y;
-    int             z;
+    float             x;
+    float             y;
+    float             z;
     int             num;
 }               t_point;
 
 typedef struct  s_var
 {
-    int mx;
-    int my;
+    float mx;
+    float my;
 }               t_var;
 
 typedef struct  s_map
@@ -55,7 +55,7 @@ typedef struct  s_window
 int         ft_dealkey(int key, t_window *infos);
 t_map       *ft_read(int fd, t_window *infos, t_map *mapinf);
 void        ft_draw(t_window *infos);
-void        ft_line(t_window *infos, int x1, int y1, int x2, int y2);
+void        ft_line(t_window *infos, float x1, float y1, float x2, float y2);
 t_point     *ft_get_point(t_point *vertices, t_map *mapinf, t_var *var);
 t_window    *ft_more_z(t_window *infos);
 t_window    *ft_less_z(t_window *infos);

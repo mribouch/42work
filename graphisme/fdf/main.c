@@ -6,43 +6,12 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 18:19:25 by mribouch          #+#    #+#             */
-/*   Updated: 2019/02/13 15:39:33 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/02/15 16:54:34 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-/*t_point *ft_malloc_lst(t_point *lstp, t_map *mapinf)
-{
-    int     i;
-    int     j;
-    t_point *ret;
-
-    i = 0;
-    j = 0;
-    ret = NULL;
-    if (!(lstp = malloc(sizeof(t_point))))
-        return (0);
-    ret = lstp;
-    lstp->next = NULL;
-    while (mapinf->map[i] != 0)
-    {
-        //ft_putendl("TEST BOUCLE");
-        while (j < mapinf->width)
-        {
-           // ft_putendl("DOUBLE BOUCLE");
-            if (!(lstp->next = malloc(sizeof(t_point))))
-                return (0);
-            lstp = lstp->next;
-            j++;
-        }
-        j = 0;
-        i++;
-    }
-    //ft_putendl("TEST AFTER");
-    lstp->next = NULL;
-    return (ret);
-}*/
+#include <math.h>
 
 void    ft_print_map(t_map *mapinf)
 {
@@ -66,16 +35,16 @@ void    ft_print_map(t_map *mapinf)
     }
 }
 
-void    ft_line(t_window *infos, int x1, int y1, int x2, int y2)
+void    ft_line(t_window *infos, float x1, float y1, float x2, float y2)
 {
-    int dx;
-    int dy;
+    float dx;
+    float dy;
     int i;
     int xinc;
     int yinc;
-    int cumul;
-    int x;
-    int y;
+    float cumul;
+    float x;
+    float y;
 
     x = x1;
     y = y1;
@@ -84,9 +53,9 @@ void    ft_line(t_window *infos, int x1, int y1, int x2, int y2)
     i = 1;
     xinc = (dx > 0) ? 1 : -1;
     yinc = (dy > 0) ? 1 : -1;
-    dx = abs(dx);
-    dy = abs(dy);
-    mlx_pixel_put(infos->mlx_ptr, infos->win_ptr, x, y, 0x00AFFF);
+    dx = fabsf(dx);
+    dy = fabsf(dy);
+    mlx_pixel_put(infos->mlx_ptr, infos->win_ptr, (int)x, (int)y, 0x00AFFF);
     if (dx > dy)
     {
         cumul = dx / 2;
@@ -99,7 +68,7 @@ void    ft_line(t_window *infos, int x1, int y1, int x2, int y2)
                 cumul -= dx;
                 y += yinc;
             }
-            mlx_pixel_put(infos->mlx_ptr, infos->win_ptr, x, y, 0x00AFFF);
+            mlx_pixel_put(infos->mlx_ptr, infos->win_ptr, (int)x, (int)y, 0x00AFFF);
         }
     }
     else
@@ -115,7 +84,7 @@ void    ft_line(t_window *infos, int x1, int y1, int x2, int y2)
                 cumul -= dy;
                 x += xinc;
             }
-            mlx_pixel_put(infos->mlx_ptr, infos->win_ptr, x, y, 0x00AFFF);
+            mlx_pixel_put(infos->mlx_ptr, infos->win_ptr, (int)x, (int)y, 0x00AFFF);
         }
     }
 }
@@ -123,7 +92,7 @@ void    ft_line(t_window *infos, int x1, int y1, int x2, int y2)
 t_var   *ft_fill_var(t_var *var)
 {
     var->mx = 20;
-    var->my = 30;
+    var->my = 20;
     return (var);
 }
 
@@ -131,7 +100,6 @@ int main(int ac, char **av)
 {
     void        *mlx_ptr;
     void        *win_ptr;
-    //int       i;
     int         fd;
     t_window    *infos;
     t_map       *mapinf;
@@ -148,7 +116,7 @@ int main(int ac, char **av)
             return (0);
         fd = open(av[1], O_RDONLY);
         mlx_ptr = mlx_init();
-        win_ptr = mlx_new_window(mlx_ptr, 500, 500, "testwin");
+        win_ptr = mlx_new_window(mlx_ptr, 700, 700, "testwin");
         infos->mlx_ptr = mlx_ptr;
         infos->win_ptr = win_ptr;
         mapinf = ft_read(fd, infos, mapinf);

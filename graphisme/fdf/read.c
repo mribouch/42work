@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 12:32:07 by mribouch          #+#    #+#             */
-/*   Updated: 2019/02/15 14:08:24 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/02/15 15:21:12 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,12 @@ int     **ft_fill_map(int **map, char *full)
     int     i;
     int     k;
     int     nbl;
+    int     min;
 
     i = 0;
     k = 0;
     nbl = 0;
+    min = 2147483647;
     while (full[k] != '\0')
     {
         if (full[k] == '\n')
@@ -62,9 +64,6 @@ int     **ft_fill_map(int **map, char *full)
         }
         else if (full[k] >= '0' && full[k] <= '9')
         {
-            ft_putstr("k = ");
-            ft_putnbr(k);
-            ft_putchar('\n');
             map[nbl][i] = ft_get_num(full, k);
             if (full[k] >= '0' && full[k] <= '9')
             {
