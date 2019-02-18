@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 13:14:18 by mribouch          #+#    #+#             */
-/*   Updated: 2019/02/15 18:46:33 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/02/18 12:18:12 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_point     *ft_centre_map(t_point *vertices, t_map *mapinf)
 
     i = 0;
     j = vertices[mapinf->width * mapinf->height - 1].y;
-    ft_putstr("f3gf42g ");
+    ft_putstr("ceci est j ");
     ft_putnbr(j);
     while (i <= mapinf->height * mapinf->width)
     {

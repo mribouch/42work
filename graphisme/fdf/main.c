@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 18:19:25 by mribouch          #+#    #+#             */
-/*   Updated: 2019/02/15 16:54:34 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/02/18 16:48:39 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void    ft_line(t_window *infos, float x1, float y1, float x2, float y2)
     yinc = (dy > 0) ? 1 : -1;
     dx = fabsf(dx);
     dy = fabsf(dy);
-    mlx_pixel_put(infos->mlx_ptr, infos->win_ptr, (int)x, (int)y, 0x00AFFF);
+    mlx_pixel_put(infos->mlx_ptr, infos->win_ptr, (int)x, (int)y, 0xFFFFFF);
     if (dx > dy)
     {
         cumul = dx / 2;
@@ -68,7 +68,7 @@ void    ft_line(t_window *infos, float x1, float y1, float x2, float y2)
                 cumul -= dx;
                 y += yinc;
             }
-            mlx_pixel_put(infos->mlx_ptr, infos->win_ptr, (int)x, (int)y, 0x00AFFF);
+            mlx_pixel_put(infos->mlx_ptr, infos->win_ptr, (int)x, (int)y, 0xFFFFFF);
         }
     }
     else
@@ -84,7 +84,7 @@ void    ft_line(t_window *infos, float x1, float y1, float x2, float y2)
                 cumul -= dy;
                 x += xinc;
             }
-            mlx_pixel_put(infos->mlx_ptr, infos->win_ptr, (int)x, (int)y, 0x00AFFF);
+            mlx_pixel_put(infos->mlx_ptr, infos->win_ptr, (int)x, (int)y, 0xFFFFFF);
         }
     }
 }
@@ -116,11 +116,13 @@ int main(int ac, char **av)
             return (0);
         fd = open(av[1], O_RDONLY);
         mlx_ptr = mlx_init();
+        infos->height = 700;
+        infos->width = 700;
         win_ptr = mlx_new_window(mlx_ptr, 700, 700, "testwin");
         infos->mlx_ptr = mlx_ptr;
         infos->win_ptr = win_ptr;
         mapinf = ft_read(fd, infos, mapinf);
-        if (!(vertices = malloc(sizeof(t_point) * (mapinf->width * (mapinf->height)))))
+        if (!(vertices = malloc(sizeof(t_point) * (mapinf->width * (mapinf->height)) + 1)))
             return (0);
         if (!(var = malloc(sizeof(t_var))))
             return (0);
