@@ -6,11 +6,12 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 13:48:15 by mribouch          #+#    #+#             */
-/*   Updated: 2019/02/15 19:34:14 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/12 17:06:23 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <math.h>
 
 /*int ft_nl(int v, t_window *infos)
 {
@@ -26,52 +27,34 @@
     return (0);
 }*/
 
-t_window   *ft_zoom(t_window *infos)
+/*t_window   *ft_zoom(t_window *infos)
 {
-    int v;
-    int i;
-    int test;
-
-    v = 0;
-    i = 0;
-    while (v < infos->mapinf->width * infos->mapinf->height)
-    {
-        infos->vertices[v].x = infos->vertices[v].x * 2;
-        infos->vertices[v].y = infos->vertices[v].y * 2;
-        infos->vertices[v].z = infos->vertices[v].z * 2;
-        v++;
-    }
-    test = infos->vertices[0].x / 2;
-    while (i < infos->mapinf->width * infos->mapinf->height)
-    {
-        infos->vertices[i].x = infos->vertices[i].x - test;
-        infos->vertices[i].y = infos->vertices[i].y - test;
-        i++;
-    }
+    ft_bzero(infos->img, (infos->height * infos->width) * sizeof(int));
+    infos->state->size.x += 1;
+    infos->state->size.y += 1;
+    infos->state->size.z += 1;
     return (infos);
 }
 
 t_window   *ft_dezoom(t_window *infos)
 {
-    int v;
+    /*int v;
     int i;
-    int test;
+    //int test;
 
     v = 0;
     i = 0;
+    ft_bzero(infos->img, (infos->height * infos->width) * sizeof(int));
     while (v < infos->mapinf->width * infos->mapinf->height)
     {
-        infos->vertices[v].x = infos->vertices[v].x / 2;
-        infos->vertices[v].y = infos->vertices[v].y / 2;
-        infos->vertices[v].z = infos->vertices[v].z / 2;
+        infos->iso[v].x = infos->vertices[v].x / 1.1;
+        infos->iso[v].y = infos->vertices[v].y / 1.1;
+        infos->iso[v].z = infos->vertices[v].z / 1.1;
         v++;
     }
-    test = infos->vertices[0].x * 2;
-    while (i < infos->mapinf->width * infos->mapinf->height)
-    {
-        infos->vertices[i].x = infos->vertices[i].x + test / 2;
-        infos->vertices[i].y = infos->vertices[i].y + test / 2;
-        i++;
-    }
+    ft_bzero(infos->img, (infos->height * infos->width) * sizeof(int));
+    infos->state->size.x -= 1;
+    infos->state->size.y -= 1;
+    infos->state->size.z -= 1;
     return (infos);
-}
+}*/

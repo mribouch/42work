@@ -6,111 +6,50 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 14:11:33 by mribouch          #+#    #+#             */
-/*   Updated: 2019/02/18 16:24:03 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/12 17:58:08 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int ft_min_z(t_window *infos)
+/*t_window    *ft_more_z(t_window *infos)
 {
-    int i;
-    int min;
-
-    i = 0;
-    min = 2147483647;
-    while (i < infos->mapinf->width * infos->mapinf->height)
-    {
-        if (min > infos->vertices[i].z)
-            min = infos->vertices[i].z;
-        i++;
-    }
-    ft_putstr("min z = ");
-    ft_putnbr(min);
-    ft_putchar('\n');
-    return (min);
-}
-
-t_window    *ft_more_z(t_window *infos)
-{
-    int i;
-    int min;
-
-    min = ft_min_z(infos);
-    i = 0;
-    while (i < (infos->mapinf->width * infos->mapinf->height))
-    {
-       if (infos->vertices[i].z != min)
-            infos->vertices[i].z = infos->vertices[i].z * 1.1;
-        i++;
-    }
+    ft_bzero(infos->img, (infos->height * infos->width) * sizeof(int));
+    infos->state->size.z += 1;
     return (infos);
 }
 
 t_window    *ft_less_z(t_window *infos)
 {
-    int i;
-    int min;
-
-    i = 0;
-    min = ft_min_z(infos);
-    while (i < (infos->mapinf->width * infos->mapinf->height))
-    {
-        if (infos->vertices[i].z > min)
-            infos->vertices[i].z = infos->vertices[i].z / 1.1;
-        i++;
-    }
+    ft_bzero(infos->img, (infos->height * infos->width) * sizeof(int));
+    infos->state->size.z -= 1;
     return (infos);
 }
 
 t_window    *ft_up(t_window *infos)
 {
-    int i;
-
-    i = 0;
-    while (i < (infos->mapinf->width * infos->mapinf->height))
-    {
-        infos->vertices[i].y = infos->vertices[i].y - 5;
-        i++;
-    }
+    ft_bzero(infos->img, (infos->height * infos->width) * sizeof(int));
+    infos->state->pos.y -= 1;
     return (infos);
 }
 
 t_window    *ft_down(t_window *infos)
 {
-    int i;
-
-    i = 0;
-    while (i < (infos->mapinf->width * infos->mapinf->height))
-    {
-        infos->vertices[i].y = infos->vertices[i].y + 5;
-        i++;
-    }
+    ft_bzero(infos->img, (infos->height * infos->width) * sizeof(int));
+    infos->state->pos.y += 1;
     return (infos);
 }
 
 t_window    *ft_right(t_window *infos)
 {
-    int i;
-
-    i = 0;
-    while (i < (infos->mapinf->width * infos->mapinf->height))
-    {
-        infos->vertices[i].x = infos->vertices[i].x + 5;
-        i++;
-    }
+    ft_bblue(infos->img, (infos->height * infos->width) * sizeof(int));
+    infos->state->pos.x += 1;
     return (infos);
 }
 
 t_window    *ft_left(t_window *infos)
 {
-    int i;
-
-    i = 0;
-    while (i < (infos->mapinf->width * infos->mapinf->height))
-    {
-        infos->vertices[i].x = infos->vertices[i].x - 5;
-        i++;
-    }
+    ft_bzero(infos->img, (infos->height * infos->width) * sizeof(int));
+    infos->state->pos.x -= 1;
     return (infos);
-}
+}*/
