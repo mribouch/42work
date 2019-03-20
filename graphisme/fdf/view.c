@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 13:12:42 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/13 18:32:49 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/20 19:05:07 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,63 @@ t_point    *ft_isov(t_window *infos)
     return (infos->iso);
 }
 
+t_point *ft_persp(t_window *infos, float nb)
+{
+    int i;
+    //int x;
+    //int y;
+    //int z;
+    //int j;
+    //float   perp[4][4] = {{1, 0, 0, 0},
+
+    i = 0;
+    while (i < infos->mapinf->width * infos->mapinf->height)
+    {
+        /*ft_putendl("AVANT");
+        ft_putstr("i = ");
+        ft_putnbr(i);
+        ft_putchar('\n');
+        ft_putstr("i = ");
+        ft_putnbr(i);
+        ft_putchar('\n');
+        ft_putstr("infos->iso[i].x = ");
+        printf("%f\n", infos->iso[i].x);
+        ft_putstr("infos->iso[i].y = ");
+        printf("%f\n", infos->iso[i].y);
+        ft_putstr("infos->iso[i].z = ");
+        printf("%f\n", infos->iso[i].z);*/
+        /*j = 1 / (2 - infos->iso[i].z);
+        x = j * infos->iso[i].x + perp[0][1] * infos->iso[i].y + perp[0][2] * infos->iso[i].z + perp[0][3] * 1;
+        y = perp[1][0] * infos->iso[i].x + j * infos->iso[i].y + perp[1][2] * infos->iso[i].z + perp[1][3] * 1;
+        z = perp[2][0] * infos->iso[i].x + perp[2][1] * infos->iso[i].y + j * infos->iso[i].z + perp[2][3] * 1;
+        infos->iso[i].x = x;
+        infos->iso[i].y = y;
+        infos->iso[i].z = z;*/
+        if (infos->iso[i].z != 0)
+       {
+            // infos->iso[i].x = infos->iso[i].x / (1 - ((infos->iso[i].z / nb)));
+            // infos->iso[i].y = infos->iso[i].y / (1 - ((infos->iso[i].z / nb)));
+            (void)nb;
+            infos->iso[i].x /= fabsf(infos->iso[i].z) / 500.0f;
+            infos->iso[i].y /= fabsf(infos->iso[i].z) / 500.0f;
+       }
+        /*ft_putendl("APRES");
+        ft_putstr("i = ");
+        ft_putnbr(i);
+        ft_putchar('\n');
+        ft_putstr("infos->iso[i].x = ");
+        printf("%f\n", infos->iso[i].x);
+        ft_putstr("infos->iso[i].y = ");
+        printf("%f\n", infos->iso[i].y);
+        ft_putstr("infos->iso[i].z = ");
+        printf("%f\n", infos->iso[i].z);*/
+        //infos->iso[i].x = infos->iso[i].x / (infos->iso[i].z / nb);
+        //ft_putstr("infini ?");
+        i++;
+    }
+    return (infos->iso);
+}
+
 void    ft_callback(t_window *infos)
 {
     int i;
@@ -75,7 +132,7 @@ void    ft_callback(t_window *infos)
     infos->iso = ft_roty(infos);
     infos->iso = ft_rotz(infos);
     i = 0;
-    infos->iso = ft_isov(infos);
+    //infos->iso = ft_isov(infos);
     while (i < infos->mapinf->width * infos->mapinf->height)
     {
         infos->iso[i].x = infos->iso[i].x + infos->state->pos.x;
@@ -83,6 +140,7 @@ void    ft_callback(t_window *infos)
         infos->iso[i].z = infos->iso[i].z + infos->state->pos.z;
         i++;
     }
+    infos->iso = ft_persp(infos, 450.0f);
     ft_draw_iso(infos);
     mlx_put_image_to_window(infos->mlx_ptr, infos->win_ptr, infos->img_ptr, 0, 0);
 }

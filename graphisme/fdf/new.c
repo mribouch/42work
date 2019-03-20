@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 15:26:33 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/13 12:56:25 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:56:15 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,24 @@ void    ft_line_new(t_window *infos, t_point vertices1, t_point vertices2)
     float cumul;
     float x;
     float y;
-
-    /*vertices1.x = vertices1.x / (vertices1.z / 200.0f);
-    vertices1.y = vertices1.y / (vertices1.z / 200.0f);
-    vertices2.x = vertices2.x / (vertices2.z / 200.0f);
-    vertices2.y = vertices2.y / (vertices2.z / 200.0f);*/
+    /*ft_putstr("x = ");
+    ft_putnbr(vertices2.x);
+    ft_putchar('\n');
+    ft_putstr("y = ");
+    ft_putnbr(vertices2.y);
+    ft_putchar('\n');
+    ft_putstr("z = ");
+    ft_putnbr(vertices2.z);
+    ft_putchar('\n');*/
     x = vertices1.x + infos->width / 2;
     y = vertices1.y + infos->height / 2;
     dx = vertices2.x - vertices1.x;
     dy = vertices2.y - vertices1.y;
+    //GALAXY LIKE
+    /*vertices1.x = vertices1.x * (dx / (vertices1.z / 500.0f));
+    vertices1.y = vertices1.y * (dy / (vertices1.z / 500.0f));
+    vertices2.x = vertices2.x * (dx / (vertices2.z / 500.0f));
+    vertices2.y = vertices2.y * (dy / (vertices2.z / 500.0f));*/
     i = 1;
     xinc = (dx > 0) ? 1 : -1;
     yinc = (dy > 0) ? 1 : -1;
@@ -88,12 +97,17 @@ void    ft_line_new(t_window *infos, t_point vertices1, t_point vertices2)
 
 int     ft_over_new(t_window *infos, int v)
 {
-    if (infos->vertices[v].x > infos->width || infos->vertices[v].x < 0)
+    if (infos->iso[v].z <= 1.0f)
         return (1);
-    if (infos->vertices[v].y > infos->height || infos->vertices[v].y < 0)
-        return (1);
+    /*if (infos->vertices[v].y > infos->height || infos->vertices[v].y < 0)
+        return (1);*/
     return (0);
 }
+
+#include <stdio.h>
+
+
+
 
 void    ft_draw_iso(t_window *infos)
 {
@@ -108,11 +122,21 @@ void    ft_draw_iso(t_window *infos)
     {
         while (j < infos->mapinf->width)
         {
-            //ft_putendl("ISO 1");
-            if (j < infos->mapinf->width - 1 /*&& ft_over_new(infos, v) == 0*/)
-                ft_line_new(infos, infos->iso[v], infos->iso[v + 1]);
-            if (i < infos->mapinf->height - 1 /*&& ft_over_new(infos, v) == 0*/)
-                ft_line_new(infos, infos->iso[v], infos->iso[v + infos->mapinf->width]);
+            //     ft_putendl("SUIVANT");
+            //     ft_putstr("infos->iso[i].x = ");
+            //     printf("%f\n", infos->iso[i].x);
+            //     ft_putstr("infos->iso[i].y = ");
+            //     printf("%f\n", infos->iso[i].y);
+            //     ft_putstr("infos->iso[i].z = ");
+            //     printf("%f\n", infos->iso[i].z);
+            // ft_putendl("TEST ICI");
+            //if (infos->iso[i].z >= 0)
+           // {
+                if (j < infos->mapinf->width - 1 && ft_over_new(infos, v) == 0)
+                    ft_line_new(infos, infos->iso[v], infos->iso[v + 1]);
+                if (i < infos->mapinf->height - 1 && ft_over_new(infos, v) == 0)
+                    ft_line_new(infos, infos->iso[v], infos->iso[v + infos->mapinf->width]);
+           // }
             v++;
             j++;
         }
@@ -121,6 +145,9 @@ void    ft_draw_iso(t_window *infos)
         i++;
     }
 }
+
+
+
 
 void    ft_draw_new(t_window *infos)
 {
@@ -170,8 +197,8 @@ t_point    *ft_new(t_window *infos, t_point *vertices, char **col)
     {
         while (j < infos->mapinf->width)
         {
-            vertices[v].x = dx;
-            vertices[v].y = dy;
+            vertices[v].x = dx - infos->mapinf->width * 10;
+            vertices[v].y = dy - infos->mapinf->height * 10;
             vertices[v].z = (infos->mapinf->map[i][j]);
             vertices[v].num = num;
             vertices[v].color = ft_hex2int(col[v]);

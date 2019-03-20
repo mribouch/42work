@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 15:14:59 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/11 16:59:02 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/14 14:00:43 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,18 @@ void	ft_bblue(void *s, size_t n)
 	while (i < n)
 	{
 		((int *)s)[i] = 0x005B5D;
+		i++;
+	}
+}
+
+void	ft_bcolor(void *s, int color, size_t n)
+{
+	size_t i;
+
+	i = 0;
+	while (i < n)
+	{
+		((int *)s)[i] = color;
 		i++;
 	}
 }

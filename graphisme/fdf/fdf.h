@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 15:34:57 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/13 16:45:46 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:43:59 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ typedef struct  s_window
     int     width;
     int     height;
     int     *img;
+    int     colid;
+    int     bcol;
+    int     boolp;
     t_point *vertices;
     t_point *iso;
     t_map   *mapinf;
@@ -99,10 +102,12 @@ t_point     *ft_rotz(t_window *infos);
 //void        ft_new(t_window *infos);
 void        ft_draw_new(t_window *infos);
 void        ft_draw_iso(t_window *infos);
+//void        ft_draw_persp(t_window *infos);
 t_point     *ft_iso(t_window *infos);
 t_point     *ft_isov(t_window *infos);
 void        ft_callback(t_window *infos);
 void	    ft_bblue(void *s, size_t n);
+void	    ft_bcolor(void *s, int color, size_t n);
 
 
 #endif

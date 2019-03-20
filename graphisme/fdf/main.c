@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 18:19:25 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/13 16:45:17 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:58:46 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,8 @@ int main(int ac, char **av)
         var = ft_fill_var(var);
         infos->state = ft_fill_state(infos->state);
         ft_putendl("JUSTD LS");
+        infos->bcol = 0x000000;
+        infos->colid = 0;
         infos->img = img;
         infos->var = var;
         infos->mapinf = mapinf;
