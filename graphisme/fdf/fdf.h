@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 15:34:57 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/21 14:42:32 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/21 16:44:56 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ t_point     *ft_isov(t_window *infos);
 void        ft_callback(t_window *infos);
 void	    ft_bblue(void *s, size_t n);
 void	    ft_bcolor(void *s, int color, size_t n);
+void        ft_putmenu(t_window *infos);
 
 
 #endif

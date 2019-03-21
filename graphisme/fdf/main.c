@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 18:19:25 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/21 14:42:56 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/21 18:15:30 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,26 @@ t_state *ft_fill_state(t_state *state)
     state->pos.y = 0;
     state->pos.z = 0;
     return (state);
+}
+
+void    ft_putmenu(t_window *infos)
+{
+    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 10, 10, 0x5995DA, "Move right     : Right arrow");
+    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 10, 30, 0x5995DA, "Move left      : Left arrow");
+    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 10, 50, 0x5995DA, "Move up        : Up arrow");
+    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 10, 70, 0x5995DA, "Move down      : Down arrow");
+    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 10, 90, 0x5995DA, "Move frontward : Page up (Perspective view)");
+    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 10, 110, 0x5995DA, "Move Backward  : Page down (Perspective view)");
+    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 1300, 10, 0x5995DA, "Zoom In  : numpad +");
+    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 1300, 30, 0x5995DA, "Zoom Out : numpad -");
+    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 10, 940, 0x5995DA, "Change Background Color : c");
+    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 10, 960, 0x5995DA, "Perspective view        : p");
+    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 1220, 860, 0x5995DA, "Rotate X up    : Numpad 8");
+    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 1220, 880, 0x5995DA, "Rotate X down  : Numpad 5");
+    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 1220, 900, 0x5995DA, "Rotate Y right : Numpad 6");
+    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 1220, 920, 0x5995DA, "Rotate Y left  : Numpad 4");
+    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 1220, 940, 0x5995DA, "Rotate Z left  : Numpad 7");
+    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 1220, 960, 0x5995DA, "Rotate Z right : Numpad 9");
 }
 
 int main(int ac, char **av)
@@ -138,6 +158,7 @@ int main(int ac, char **av)
         //ft_draw_iso(infos);
         ft_putendl("gngrn");
         ft_callback(infos);
+        ft_putmenu(infos);
         //ft_putendl("CIICI");
         //mlx_put_image_to_window(infos->mlx_ptr, infos->win_ptr, img_ptr, 0, 0);
         mlx_key_hook(win_ptr, ft_dealkey, infos);

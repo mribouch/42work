@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 13:12:42 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/21 15:58:12 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/21 17:57:07 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,58 +59,18 @@ t_point    *ft_isov(t_window *infos)
     return (infos->iso);
 }
 
-t_point *ft_persp(t_window *infos, float nb)
+t_point *ft_persp(t_window *infos, float fov)
 {
     int i;
-    //int x;
-    //int y;
-    //int z;
-    //int j;
-    //float   perp[4][4] = {{1, 0, 0, 0},
-
     i = 0;
     while (i < infos->mapinf->width * infos->mapinf->height)
     {
-        /*ft_putendl("AVANT");
-        ft_putstr("i = ");
-        ft_putnbr(i);
-        ft_putchar('\n');
-        ft_putstr("i = ");
-        ft_putnbr(i);
-        ft_putchar('\n');
-        ft_putstr("infos->iso[i].x = ");
-        printf("%f\n", infos->iso[i].x);
-        ft_putstr("infos->iso[i].y = ");
-        printf("%f\n", infos->iso[i].y);
-        ft_putstr("infos->iso[i].z = ");
-        printf("%f\n", infos->iso[i].z);*/
-        /*j = 1 / (2 - infos->iso[i].z);
-        x = j * infos->iso[i].x + perp[0][1] * infos->iso[i].y + perp[0][2] * infos->iso[i].z + perp[0][3] * 1;
-        y = perp[1][0] * infos->iso[i].x + j * infos->iso[i].y + perp[1][2] * infos->iso[i].z + perp[1][3] * 1;
-        z = perp[2][0] * infos->iso[i].x + perp[2][1] * infos->iso[i].y + j * infos->iso[i].z + perp[2][3] * 1;
-        infos->iso[i].x = x;
-        infos->iso[i].y = y;
-        infos->iso[i].z = z;*/
         if (infos->iso[i].z != 0)
-       {
-            // infos->iso[i].x = infos->iso[i].x / (1 - ((infos->iso[i].z / nb)));
-            // infos->iso[i].y = infos->iso[i].y / (1 - ((infos->iso[i].z / nb)));
-            infos->iso[i].x /= fabsf(infos->iso[i].z) / nb;
-            infos->iso[i].y /= fabsf(infos->iso[i].z) / nb;
-       }
-       infos->iso[i].z *= -1;
-        /*ft_putendl("APRES");
-        ft_putstr("i = ");
-        ft_putnbr(i);
-        ft_putchar('\n');
-        ft_putstr("infos->iso[i].x = ");
-        printf("%f\n", infos->iso[i].x);
-        ft_putstr("infos->iso[i].y = ");
-        printf("%f\n", infos->iso[i].y);
-        ft_putstr("infos->iso[i].z = ");
-        printf("%f\n", infos->iso[i].z);*/
-        //infos->iso[i].x = infos->iso[i].x / (infos->iso[i].z / nb);
-        //ft_putstr("infini ?");
+        {
+            infos->iso[i].x /= fabsf(infos->iso[i].z) / fov;
+            infos->iso[i].y /= fabsf(infos->iso[i].z) / fov;
+        }
+        infos->iso[i].z *= -1;
         i++;
     }
     return (infos->iso);
