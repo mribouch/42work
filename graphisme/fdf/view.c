@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 13:12:42 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/20 19:05:07 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/21 15:58:12 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,10 @@ t_point *ft_persp(t_window *infos, float nb)
        {
             // infos->iso[i].x = infos->iso[i].x / (1 - ((infos->iso[i].z / nb)));
             // infos->iso[i].y = infos->iso[i].y / (1 - ((infos->iso[i].z / nb)));
-            (void)nb;
-            infos->iso[i].x /= fabsf(infos->iso[i].z) / 500.0f;
-            infos->iso[i].y /= fabsf(infos->iso[i].z) / 500.0f;
+            infos->iso[i].x /= fabsf(infos->iso[i].z) / nb;
+            infos->iso[i].y /= fabsf(infos->iso[i].z) / nb;
        }
+       infos->iso[i].z *= -1;
         /*ft_putendl("APRES");
         ft_putstr("i = ");
         ft_putnbr(i);
@@ -132,7 +132,8 @@ void    ft_callback(t_window *infos)
     infos->iso = ft_roty(infos);
     infos->iso = ft_rotz(infos);
     i = 0;
-    //infos->iso = ft_isov(infos);
+    if (infos->boolp == 0)
+        infos->iso = ft_isov(infos);
     while (i < infos->mapinf->width * infos->mapinf->height)
     {
         infos->iso[i].x = infos->iso[i].x + infos->state->pos.x;
@@ -140,8 +141,13 @@ void    ft_callback(t_window *infos)
         infos->iso[i].z = infos->iso[i].z + infos->state->pos.z;
         i++;
     }
-    infos->iso = ft_persp(infos, 450.0f);
-    ft_draw_iso(infos);
+    if (infos->boolp == 1)
+    {
+        infos->iso = ft_persp(infos, 500.0f);
+        ft_draw_persp(infos);
+    }
+    else if (infos->boolp == 0)
+        ft_draw_iso(infos);
     mlx_put_image_to_window(infos->mlx_ptr, infos->win_ptr, infos->img_ptr, 0, 0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 13:50:01 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/20 18:59:41 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/21 15:47:24 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,16 +144,27 @@ int ft_dealkey(int key, t_window *infos)
         ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
         ft_callback(infos);
     }
-    else if (key == 116)
+    else if (key == 121)
     {
         ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
         infos->state->pos.z += 5;
         ft_callback(infos);
     }
-    else if (key == 121)
+    else if (key == 116)
     {
         ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
         infos->state->pos.z -= 5;
+        ft_callback(infos);
+    }
+    //key = p
+    else if (key == 35)
+    {
+        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
+        infos->boolp = !infos->boolp;
+        // if (infos->boolp == 0)
+        //     infos->boolp = 1;
+        // else if (infos->boolp == 1)
+        //     infos->boolp = 0;
         ft_callback(infos);
     }
     return (0);

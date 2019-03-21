@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 15:34:57 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/20 18:43:59 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/21 14:42:32 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ t_point     *ft_rotz(t_window *infos);
 //void        ft_new(t_window *infos);
 void        ft_draw_new(t_window *infos);
 void        ft_draw_iso(t_window *infos);
-//void        ft_draw_persp(t_window *infos);
+void        ft_draw_persp(t_window *infos);
 t_point     *ft_iso(t_window *infos);
 t_point     *ft_isov(t_window *infos);
 void        ft_callback(t_window *infos);
