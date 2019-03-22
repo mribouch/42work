@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 12:32:07 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/06 16:25:25 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/22 18:05:07 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,8 @@ t_map   *ft_read(int fd, t_map *mapinf, char ***col)
     x = 0;
     full = ft_strnew(1);
     get_next_line(fd, &line);
+    if (ft_rd_nbc(line) == -1)
+        return (0);
     full = ft_strjoin(full, line);
     full = ft_strjoin(full, "\n");
     x = ft_rd_nbc(line);

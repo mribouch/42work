@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 13:50:01 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/21 18:08:16 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/22 17:28:46 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,8 +171,8 @@ int ft_dealkey(int key, t_window *infos)
             infos->state->pos.z += 150;
             infos->state->rota.x -= 1.3f;
         }
+        //ft_putmenu(infos);
         ft_callback(infos);
     }
-    ft_putmenu(infos);
     return (0);
 }

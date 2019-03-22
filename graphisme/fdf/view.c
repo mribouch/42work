@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 13:12:42 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/21 17:57:07 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/22 17:28:47 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void    ft_callback(t_window *infos)
     else if (infos->boolp == 0)
         ft_draw_iso(infos);
     mlx_put_image_to_window(infos->mlx_ptr, infos->win_ptr, infos->img_ptr, 0, 0);
+    ft_putmenu(infos);
 }
 
         /*ft_putendl("APRES :");
