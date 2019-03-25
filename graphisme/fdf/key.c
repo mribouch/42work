@@ -6,173 +6,109 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 13:50:01 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/22 17:28:46 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/25 17:05:17 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int ft_dealkey(int key, t_window *infos)
+void	ft_set_persp(int key, t_window *infos)
 {
-    ft_putnbr(key);
-    ft_putchar('\n');
-    if (key == 53)
-      exit(0);
-    else if (key == 24)
-    {
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        infos->state->size.z += 0.1f;
-        ft_callback(infos);
-    }
-    else if (key == 27)
-    {
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        infos->state->size.z -= 0.1f;
-        ft_callback(infos);
-    }
-    // key = <-
-    else if (key == 123)
-    {
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        infos->state->pos.x -= 5;
-        ft_callback(infos);
-    }
-    else if (key == 124)
-    {
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        infos->state->pos.x += 5;
-        ft_callback(infos);
-    }
-    else if (key == 126)
-    {
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        //ft_putendl("DANS KEY :");
-        //ft_putstr("infos->vertices[30].x = ");
-        //ft_putnbr(infos->vertices[30].x);
-        infos->state->pos.y -= 5;
-        ft_callback(infos);
-    }
-    else if (key == 125)
-    {
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        infos->state->pos.y += 5;
-        ft_callback(infos);
-    }
-    else if (key == 69)
-    {
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        infos->state->size.x *= 1.1f;
-        infos->state->size.y *= 1.1f;
-        infos->state->size.z *= 1.1f;
-        /*infos->state->pos.x -= infos->state->pos.x;
-        infos->state->pos.y -= infos->state->pos.y;
-        infos->state->pos.z -= infos->state->pos.z;*/
+	if (key == 35)
+	{
+		ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
+		infos->boolp = !infos->boolp;
+		if (infos->boolp == 1)
+		{
+			infos->state->pos.z -= 150;
+			infos->state->rota.x += 1.3f;
+		}
+		else
+		{
+			infos->state->pos.z += 150;
+			infos->state->rota.x -= 1.3f;
+		}
+		ft_callback(infos);
+	}
+}
 
-        ft_callback(infos);
-    }
-    else if (key == 78)
-    {
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        infos->state->size.x /= 1.1f;
-        infos->state->size.y /= 1.1f;
-        infos->state->size.z /= 1.1f;
-        /*infos->state->pos.x += infos->state->pos.x;
-        infos->state->pos.y += infos->state->pos.y;
-        infos->state->pos.z += infos->state->pos.z;*/
-        ft_callback(infos);
-    }
-    else if (key == 91)
-    {
-       // mlx_clear_window(infos->mlx_ptr, infos->win_ptr);
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        infos->state->rota.x += 0.1f;
-        ft_callback(infos);
-    }
-    // key = 5
-    else if (key == 87)
-    {
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        infos->state->rota.x -= 0.1f;
-        ft_callback(infos);
-    }
-    // key = 6
-        else if (key == 88)
-    {
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        infos->state->rota.y += 0.1f;
-        ft_callback(infos);
-    }
-    // key = 4
-    else if (key == 86)
-    {
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        infos->state->rota.y -= 0.1f;
-        ft_callback(infos);
-    }
-    // key = 9
-    else if (key == 92)
-    {
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        infos->state->rota.z += 0.1f;
-        ft_callback(infos);
-    }
-    //key = 7
-    else if (key == 89)
-    {
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        infos->state->rota.z -= 0.1f;
-        ft_callback(infos);
-    }
-    //key = c
-    else if (key == 8)
-    {
-        infos->colid++;
-        if (infos->colid > 5)
-            infos->colid = 0;
-        if (infos->colid == 0)
-            infos->bcol = 0x000000;
-        if (infos->colid == 1)
-            infos->bcol = 0x003B3E;
-        if (infos->colid == 2)
-            infos->bcol = 0x0A3E00;
-        if (infos->colid == 3)
-            infos->bcol = 0x3C003E;
-        if (infos->colid == 4)
-            infos->bcol = 0x542E00;
-        if (infos->colid == 5)
-            infos->bcol = 0x540000;
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        ft_callback(infos);
-    }
-    else if (key == 121)
-    {
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        infos->state->pos.z += 5;
-        ft_callback(infos);
-    }
-    else if (key == 116)
-    {
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        infos->state->pos.z -= 5;
-        ft_callback(infos);
-    }
-    //key = p
-    else if (key == 35)
-    {
-        ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-        infos->boolp = !infos->boolp;
-        if (infos ->boolp == 1)
-        {
-            infos->state->pos.z -= 150;
-            infos->state->rota.x += 1.3f;
-        }
-        else
-        {
-            infos->state->pos.z += 150;
-            infos->state->rota.x -= 1.3f;
-        }
-        //ft_putmenu(infos);
-        ft_callback(infos);
-    }
-    return (0);
+void	ft_keyrota(int key, t_window *infos)
+{
+	if (key == 91 || key == 87 || key == 88 ||
+		key == 86 || key == 92 || key == 89)
+	{
+		ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
+		if (key == 91)
+			infos->state->rota.x += 0.1f;
+		else if (key == 87)
+			infos->state->rota.x -= 0.1f;
+		else if (key == 88)
+			infos->state->rota.y += 0.1f;
+		else if (key == 86)
+			infos->state->rota.y -= 0.1f;
+		else if (key == 92)
+			infos->state->rota.z += 0.1f;
+		else if (key == 89)
+			infos->state->rota.z -= 0.1f;
+		ft_callback(infos);
+	}
+}
+
+void	ft_keysize(int key, t_window *infos)
+{
+	if (key == 24 || key == 27 || key == 69 || key == 78)
+	{
+		ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
+		if (key == 24)
+			infos->state->size.z += 0.1f;
+		else if (key == 27)
+			infos->state->size.z -= 0.1f;
+		else if (key == 69)
+		{
+			infos->state->size.x *= 1.1f;
+			infos->state->size.y *= 1.1f;
+			infos->state->size.z *= 1.1f;
+		}
+		else if (key == 78)
+		{
+			infos->state->size.x /= 1.1f;
+			infos->state->size.y /= 1.1f;
+			infos->state->size.z /= 1.1f;
+		}
+		ft_callback(infos);
+	}
+}
+
+void	ft_keymove(int key, t_window *infos)
+{
+	if (key == 123 || key == 124 || key == 126 || key == 125 ||
+		key == 116 || key == 121)
+	{
+		ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
+		if (key == 123)
+			infos->state->pos.x -= 5;
+		else if (key == 124)
+			infos->state->pos.x += 5;
+		else if (key == 126)
+			infos->state->pos.y -= 5;
+		else if (key == 125)
+			infos->state->pos.y += 5;
+		else if (key == 116)
+			infos->state->pos.z -= 5;
+		else if (key == 121)
+			infos->state->pos.z += 5;
+		ft_callback(infos);
+	}
+}
+
+int		ft_dealkey(int key, t_window *infos)
+{
+	if (key == 53)
+		exit(0);
+	ft_keymove(key, infos);
+	ft_keysize(key, infos);
+	ft_keyrota(key, infos);
+	ft_set_persp(key, infos);
+	ft_set_color(key, infos);
+	return (0);
 }

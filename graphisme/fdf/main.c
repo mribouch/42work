@@ -6,22 +6,11 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 18:19:25 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/22 18:10:44 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/25 13:03:48 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-int			*ft_get_img(int *img, void *img_ptr, t_window *infos)
-{
-	int bpp;
-	int s_l;
-	int endian;
-
-	img = (int*)mlx_get_data_addr(img_ptr, &bpp, &s_l, &endian);
-	ft_bzero(img, infos->width * infos->height);
-	return (img);
-}
 
 t_state		*ft_fill_state(t_state *state)
 {
@@ -35,31 +24,6 @@ t_state		*ft_fill_state(t_state *state)
 	state->pos.y = 0;
 	state->pos.z = 0;
 	return (state);
-}
-
-void		ft_putmenu(t_window *i)
-{
-	int c;
-
-	c = 0x5995DA;
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 10, c, "Move right     : Right arrow");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 30, c, "Move left      : Left arrow");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 50, c, "Move up        : Up arrow");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 70, c, "Move down      : Down arrow");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 90, c, "Move frontward : Page up (Perspective view)");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 110, c, "Move Backward  : Page down (Perspective view)");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 1300, 10, c, "Zoom In  : Num +");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 1300, 30, c, "Zoom Out : Num -");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 1300, 50, c, "More altitude : +");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 1300, 70, c, "Less altitude : -");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 940, c, "Change Background Color : c");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 960, c, "Perspective view        : p");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 1220, 860, c, "Rotate X up    : Num 8");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 1220, 880, c, "Rotate X down  : Num 5");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 1220, 900, c, "Rotate Y right : Num 6");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 1220, 920, c, "Rotate Y left  : Num 4");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 1220, 940, c, "Rotate Z left  : Num 7");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 1220, 960, c, "Rotate Z right : Num 9");
 }
 
 t_window	*ft_create_infos(t_window *infos, int *fd, char **av)

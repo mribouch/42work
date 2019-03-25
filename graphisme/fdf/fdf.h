@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 15:34:57 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/21 16:44:56 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/25 18:15:28 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,28 @@ typedef struct  s_point
     float             y;
     float             z;
     int             color;
-    int             num;
 }               t_point;
+
+typedef struct  s_newv
+{
+    int i;
+    int j;
+    int dx;
+    int dy;
+    int v;
+}               t_newv;
+
+typedef struct  s_bresen
+{
+    float   dx;
+    float   dy;
+    int     i;
+    int     xinc;
+    int     yinc;
+    float   cumul;
+    float   x;
+    float   y;
+}               t_bresen;
 
 typedef struct  s_var
 {
@@ -84,11 +104,17 @@ typedef struct  s_window
 
 int         ft_dealkey(int key, t_window *infos);
 t_map       *ft_read(int fd, t_map *mapinf, char ***col);
+int	        ft_rd_nbc(char *full);
+int	        ft_rd_nbl(char *full);
+void        ft_set_color(int key, t_window *infos);
 void        ft_draw(t_window *infos);
 int         ft_lerp(int i, int color1, int color2, float nbp);
-void        ft_line(t_window *infos, t_point vertices1, t_point vertices2);
+void	    ft_line_new(t_window *infos, t_point vertices1, t_point vertices2);
+int		    *ft_fill_pixel_new(t_window *infos, int x, int y, int color1, int color2, int j, float nbp);
+int			*ft_get_img(int *img, void *img_ptr, t_window *infos);
+char		**ft_get_col(char **allpoint, char **col);
+int			ft_get_num(char *full, int k);
 int         ft_get_c(char *full);
-int         ft_get_s(char *full);
 int         *ft_get_img_point(t_window *infos);
 int	        ft_hex2int(char *hex);
 char		**ft_strsplit_fdf(char *str);
@@ -108,7 +134,7 @@ t_point     *ft_isov(t_window *infos);
 void        ft_callback(t_window *infos);
 void	    ft_bblue(void *s, size_t n);
 void	    ft_bcolor(void *s, int color, size_t n);
-void        ft_putmenu(t_window *infos);
+void        ft_putmenu(t_window *i);
 
 
 #endif

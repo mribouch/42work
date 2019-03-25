@@ -6,22 +6,24 @@
 #    By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 12:52:28 by mribouch          #+#    #+#              #
-#    Updated: 2019/03/13 11:59:17 by mribouch         ###   ########.fr        #
+#    Updated: 2019/03/25 18:25:22 by mribouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
-SRCS = main.c	\
-	   read.c	\
-	   draw.c	\
-	   get.c	\
-	   tools.c	\
-	   key.c	\
-	   lerp.c	\
-	   new.c	\
-	   view.c	\
-	   rot.c
+SRCS = main.c		\
+	   read.c		\
+	   get.c		\
+	   bresenham.c	\
+	   tools.c		\
+	   split.c		\
+	   key.c		\
+	   color.c		\
+	   new.c		\
+	   view.c		\
+	   rot.c		\
+	   menu.c
 
 FLAGS = -Wall -Wextra -Werror
 OBJS = $(SRCS:.c=.o)
