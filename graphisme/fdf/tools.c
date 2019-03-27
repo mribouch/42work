@@ -6,13 +6,27 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 15:14:59 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/25 15:33:10 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/26 12:29:00 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	ft_hex2int(char *hex)
+t_state	*ft_fill_persp_state(t_state *state)
+{
+	state->size.x = 1;
+	state->size.y = 1;
+	state->size.z = 1;
+	state->rota.x = 1.3f;
+	state->rota.y = 0;
+	state->rota.z = 0;
+	state->pos.x = 0;
+	state->pos.y = 0;
+	state->pos.z = -150;
+	return (state);
+}
+
+int		ft_hex2int(char *hex)
 {
 	int	result;
 	int	i;
@@ -41,7 +55,7 @@ int	ft_hex2int(char *hex)
 	return (result);
 }
 
-int	ft_get_c(char *full)
+int		ft_get_c(char *full)
 {
 	int	index;
 
@@ -55,7 +69,7 @@ int	ft_get_c(char *full)
 	return (0);
 }
 
-int	ft_rd_nbc(char *full)
+int		ft_rd_nbc(char *full)
 {
 	int	i;
 	int	nbc;
@@ -81,7 +95,7 @@ int	ft_rd_nbc(char *full)
 	return (nbc + 1);
 }
 
-int	ft_rd_nbl(char *full)
+int		ft_rd_nbl(char *full)
 {
 	int	i;
 	int	nbl;

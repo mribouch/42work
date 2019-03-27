@@ -6,88 +6,75 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 18:31:31 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/21 14:44:11 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/27 17:02:35 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <math.h>
 
-//0.785398
-//0.174533
-
-t_point     *ft_rotx(t_window *infos)
+t_point	*ft_multmat(t_window *infos, t_mat4 rot)
 {
-    int     i;
-    float   x;
-    float   y;
-    float   z;
-    float rot[4][4] = {{1 , 0, 0, 0},
-                    {0, cos(infos->state->rota.x), -sin(infos->state->rota.x), 0},
-                    {0, sin(infos->state->rota.x), cos(infos->state->rota.x), 0},
-                    {0, 0, 0, 1}};
-    i = 0;
-    x = 0;
-    y = 0;
-    z = 0;
-    while (i < infos->mapinf->height * infos->mapinf->width)
-    {
-        x = rot[0][0] * infos->iso[i].x + rot[0][1] * infos->iso[i].y + rot[0][2] * infos->iso[i].z + rot[0][3] * 1;
-        y = rot[1][0] * infos->iso[i].x + rot[1][1] * infos->iso[i].y + rot[1][2] * infos->iso[i].z + rot[1][3] * 1;
-        z = rot[2][0] * infos->iso[i].x + rot[2][1] * infos->iso[i].y + rot[2][2] * infos->iso[i].z + rot[2][3] * 1;
-        infos->iso[i].x = x;
-        infos->iso[i].y = y;
-        infos->iso[i].z = z;
-        i++;
-    }
-    return (infos->iso);
+	int		i;
+	float	x;
+	float	y;
+	float	z;
+
+	i = 0;
+	while (i < infos->mapinf->height * infos->mapinf->width)
+	{
+		x = rot.d.m00 * infos->iso[i].x + rot.d.m01 * infos->iso[i].y +
+			rot.d.m02 * infos->iso[i].z + rot.d.m03 * 1;
+		y = rot.d.m10 * infos->iso[i].x + rot.d.m11 * infos->iso[i].y +
+			rot.d.m12 * infos->iso[i].z + rot.d.m13 * 1;
+		z = rot.d.m20 * infos->iso[i].x + rot.d.m21 * infos->iso[i].y +
+			rot.d.m22 * infos->iso[i].z + rot.d.m23 * 1;
+		infos->iso[i].x = x;
+		infos->iso[i].y = y;
+		infos->iso[i].z = z;
+		i++;
+	}
+	return (infos->iso);
 }
 
-t_point    *ft_roty(t_window *infos)
+t_point	*ft_rotx(t_window *infos)
 {
-    int     i;
-    float   x;
-    float   y;
-    float   z;
-    float rot[4][4] = {{cos(infos->state->rota.y) , 0, sin(infos->state->rota.y), 0},
-                    {0, 1, 0, 0},
-                    {-sin(infos->state->rota.y), 0, cos(infos->state->rota.y), 0},
-                    {0, 0, 0, 1}};
-    i = 0;
-    while (i < infos->mapinf->height * infos->mapinf->width)
-    {
-        x = rot[0][0] * infos->iso[i].x + rot[0][1] * infos->iso[i].y + rot[0][2] * infos->iso[i].z + rot[0][3] * 1;
-        y = rot[1][0] * infos->iso[i].x + rot[1][1] * infos->iso[i].y + rot[1][2] * infos->iso[i].z + rot[1][3] * 1;
-        z = rot[2][0] * infos->iso[i].x + rot[2][1] * infos->iso[i].y + rot[2][2] * infos->iso[i].z + rot[2][3] * 1;
-        infos->iso[i].x = x;
-        infos->iso[i].y = y;
-        infos->iso[i].z = z;
-        i++;
-    }
-    return (infos->iso);
+	t_mat4	rot;
+
+	rot = (t_mat4)(struct s_mat4_data) {
+		1, 0, 0, 0,
+		0, cos(infos->state->rota.x), -sin(infos->state->rota.x), 0,
+		0, sin(infos->state->rota.x), cos(infos->state->rota.x), 0,
+		0, 0, 0, 1
+	};
+	infos->iso = ft_multmat(infos, rot);
+	return (infos->iso);
 }
 
-t_point     *ft_rotz(t_window *infos)
+t_point	*ft_roty(t_window *infos)
 {
-    int     i;
-    float   x;
-    float   y;
-    float   z;
-    float   rot[4][4] = {{cos(infos->state->rota.z) , sin(infos->state->rota.z), 0, 0},
-                    {-sin(infos->state->rota.z), cos(infos->state->rota.z), 0, 0},
-                    {0, 0, 1, 0},
-                    {0, 0, 0, 1}};
+	t_mat4	rot;
 
-    i = 0;
-    while (i < infos->mapinf->height * infos->mapinf->width)
-    {
-        x = rot[0][0] * infos->iso[i].x + rot[0][1] * infos->iso[i].y + rot[0][2] * infos->iso[i].z + rot[0][3] * 1;
-        y = rot[1][0] * infos->iso[i].x + rot[1][1] * infos->iso[i].y + rot[1][2] * infos->iso[i].z + rot[1][3] * 1;
-        z = rot[2][0] * infos->iso[i].x + rot[2][1] * infos->iso[i].y + rot[2][2] * infos->iso[i].z + rot[2][3] * 1;
-        infos->iso[i].x = x;
-        infos->iso[i].y = y;
-        infos->iso[i].z = z;
-        i++;
-    }
-    return (infos->iso);
+	rot = (t_mat4)(struct s_mat4_data) {
+		cos(infos->state->rota.y), 0, sin(infos->state->rota.y), 0,
+		0, 1, 0, 0,
+		-sin(infos->state->rota.y), 0, cos(infos->state->rota.y), 0,
+		0, 0, 0, 1
+	};
+	infos->iso = ft_multmat(infos, rot);
+	return (infos->iso);
+}
+
+t_point	*ft_rotz(t_window *infos)
+{
+	t_mat4	rot;
+
+	rot = (t_mat4)(struct s_mat4_data) {
+		cos(infos->state->rota.z), sin(infos->state->rota.z), 0, 0,
+		-sin(infos->state->rota.z), cos(infos->state->rota.z), 0, 0,
+		0, 0, 1, 0,
+		0, 0, 0, 1
+	};
+	infos->iso = ft_multmat(infos, rot);
+	return (infos->iso);
 }

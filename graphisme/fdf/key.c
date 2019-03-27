@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 13:50:01 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/25 17:05:17 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/26 12:58:00 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	ft_keyrota(int key, t_window *infos)
 		else if (key == 86)
 			infos->state->rota.y -= 0.1f;
 		else if (key == 92)
-			infos->state->rota.z += 0.1f;
-		else if (key == 89)
 			infos->state->rota.z -= 0.1f;
+		else if (key == 89)
+			infos->state->rota.z += 0.1f;
 		ft_callback(infos);
 	}
 }
@@ -103,6 +103,8 @@ void	ft_keymove(int key, t_window *infos)
 
 int		ft_dealkey(int key, t_window *infos)
 {
+	ft_putnbr(key);
+	ft_putchar('\n');
 	if (key == 53)
 		exit(0);
 	ft_keymove(key, infos);
@@ -110,5 +112,14 @@ int		ft_dealkey(int key, t_window *infos)
 	ft_keyrota(key, infos);
 	ft_set_persp(key, infos);
 	ft_set_color(key, infos);
+	if (key == 15)
+	{
+		ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
+		if (infos->boolp == 0)
+			infos->state = ft_fill_state(infos->state);
+		else
+			infos->state = ft_fill_persp_state(infos->state);
+		ft_callback(infos);
+	}
 	return (0);
 }
