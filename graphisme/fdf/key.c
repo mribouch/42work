@@ -6,11 +6,13 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 13:50:01 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/26 12:58:00 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/28 18:09:50 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <time.h>
+#include <stdio.h>
 
 void	ft_set_persp(int key, t_window *infos)
 {
@@ -82,7 +84,7 @@ void	ft_keysize(int key, t_window *infos)
 void	ft_keymove(int key, t_window *infos)
 {
 	if (key == 123 || key == 124 || key == 126 || key == 125 ||
-		key == 116 || key == 121)
+		key == 1 || key == 13)
 	{
 		ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
 		if (key == 123)
@@ -93,9 +95,9 @@ void	ft_keymove(int key, t_window *infos)
 			infos->state->pos.y -= 5;
 		else if (key == 125)
 			infos->state->pos.y += 5;
-		else if (key == 116)
+		else if (key == 1)
 			infos->state->pos.z -= 5;
-		else if (key == 121)
+		else if (key == 13)
 			infos->state->pos.z += 5;
 		ft_callback(infos);
 	}
@@ -103,6 +105,10 @@ void	ft_keymove(int key, t_window *infos)
 
 int		ft_dealkey(int key, t_window *infos)
 {
+	static clock_t	last_time = 0.0;
+	char			*fps;
+
+	fps = NULL;
 	ft_putnbr(key);
 	ft_putchar('\n');
 	if (key == 53)
@@ -121,5 +127,10 @@ int		ft_dealkey(int key, t_window *infos)
 			infos->state = ft_fill_persp_state(infos->state);
 		ft_callback(infos);
 	}
+	asprintf(&fps, "%.2f", 1 / ((double)(clock() - last_time) / CLOCKS_PER_SEC));
+	mlx_string_put(infos->mlx_ptr, infos->win_ptr, 20, 300, 0xFFFFFF, "FPS: ");
+    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 70, 300, 0xFFFFFF, fps);
+    free(fps);
+    last_time = clock();
 	return (0);
 }

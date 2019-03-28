@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 12:32:07 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/25 15:28:16 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/28 13:35:29 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int			**ft_fill_map2(t_map *mapinf, char *full, int k, int nbl)
 	int	i;
 
 	i = 0;
-	while (full[k++] != '\0')
+	while (full[k] != '\0')
 	{
 		if (full[k] == '\n')
 		{
@@ -35,6 +35,7 @@ int			**ft_fill_map2(t_map *mapinf, char *full, int k, int nbl)
 			}
 			i++;
 		}
+		k++;
 	}
 	mapinf->map[nbl] = 0;
 	return (mapinf->map);

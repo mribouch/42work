@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 12:51:39 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/27 14:43:35 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/28 18:09:51 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ void	ft_putmove(t_window *i, int c)
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 70, c,
 		"Move down      : Down arrow");
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 90, c,
-		"Move frontward : Page up (Perspective view)");
+		"Move forward : w (Perspective view)");
+	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 110, c,
+		"Move backwards : s (Perspective view)");
 }
 
 void	ft_putmenu(t_window *i)

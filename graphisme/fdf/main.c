@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 18:19:25 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/25 13:03:48 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/28 16:57:43 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ int			main(int ac, char **av)
 			exit(0);
 		}
 		infos = ft_fill_infos_point(infos, col);
-		mlx_key_hook(infos->win_ptr, ft_dealkey, infos);
+		mlx_hook(infos->win_ptr, 2, 1L << 0, ft_dealkey, infos);
+		//mlx_key_hook(infos->win_ptr, ft_dealkey, infos);
 		mlx_loop(infos->mlx_ptr);
 	}
 }

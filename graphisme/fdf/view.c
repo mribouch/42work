@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 13:12:42 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/27 18:03:23 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/28 17:35:49 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ t_point	*ft_changestat_size(t_window *infos)
 	return (infos->iso);
 }
 
-#include <stdio.h>
-
 void	ft_callback(t_window *infos)
 {
 	int i;
@@ -103,15 +101,7 @@ void	ft_callback(t_window *infos)
 		ft_draw_persp(infos);
 	}
 	else if (infos->boolp == 0)
-	{
-		while (i < infos->mapinf->width * infos->mapinf->height)
-		{
-			printf("NEW -------\n");
-			printf("iso[i].z = %f\n", infos->iso[i].z);
-			i++;
-		}
 		ft_draw_iso(infos);
-	}
 	mlx_put_image_to_window(infos->mlx_ptr,
 		infos->win_ptr, infos->img_ptr, 0, 0);
 	ft_putmenu(infos);
