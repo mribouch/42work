@@ -6,11 +6,19 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 12:32:07 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/28 13:35:29 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/08 17:04:37 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+t_map		*ft_fill_sizem(t_map *mapinf, int *nbl, char *full)
+{
+	mapinf->height = ft_rd_nbl(full);
+	mapinf->width = ft_rd_nbc(full);
+	*nbl = ft_rd_nbl(full);
+	return (mapinf);
+}
 
 int			**ft_fill_map2(t_map *mapinf, char *full, int k, int nbl)
 {
@@ -62,16 +70,21 @@ char		*ft_create_full(int fd)
 	full = ft_strnew(1);
 	get_next_line(fd, &line);
 	if (ft_rd_nbc(line) == -1)
+	{
+		ft_free_fullline(full, line);
 		return (0);
-	full = ft_strjoin(full, line);
-	full = ft_strjoin(full, "\n");
-	lenc = ft_rd_nbc(line);
+	}
+	full = ft_fill_full(full, line, &lenc);
 	while (get_next_line(fd, &line) > 0)
 	{
 		if (ft_rd_nbc(line) == -1 || lenc != ft_rd_nbc(line))
+		{
+			ft_free_fullline(full, line);
 			return (0);
-		full = ft_strjoin(full, line);
-		full = ft_strjoin(full, "\n");
+		}
+		full = ft_free_join(full, line);
+		free(line);
+		full = ft_free_join(full, "\n");
 	}
 	return (full);
 }
@@ -87,9 +100,7 @@ t_map		*ft_read(int fd, t_map *mapinf, char ***col)
 	full = ft_create_full(fd);
 	if (full == 0)
 		return (0);
-	mapinf->height = ft_rd_nbl(full);
-	mapinf->width = ft_rd_nbc(full);
-	nbl = ft_rd_nbl(full);
+	mapinf = ft_fill_sizem(mapinf, &nbl, full);
 	allpoint = ft_strsplit_fdf(full);
 	if (!(mapinf->map = malloc(sizeof(int*) * (mapinf->height + 1))))
 		return (0);
@@ -102,5 +113,7 @@ t_map		*ft_read(int fd, t_map *mapinf, char ***col)
 	}
 	*col = ft_get_col(allpoint, *col);
 	mapinf->map = ft_fill_map(mapinf, full);
+	ft_free_dchar(allpoint);
+	free(full);
 	return (mapinf);
 }

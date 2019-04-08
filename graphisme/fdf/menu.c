@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 12:51:39 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/28 18:09:51 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/03/29 13:40:08 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void	ft_putrotate(t_window *i, int c)
 {
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 1220, 860, c,
-		"Rotate X up    : Num 8");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 1220, 880, c,
-		"Rotate X down  : Num 5");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 1220, 900, c,
-		"Rotate Y right : Num 6");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 1220, 920, c,
-		"Rotate Y left  : Num 4");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 1220, 940, c,
+	mlx_string_put(i->mlx_ptr, i->win_ptr, 1110, 860, c,
+		"Rotate X up    : Num 8, Up arrow");
+	mlx_string_put(i->mlx_ptr, i->win_ptr, 1110, 880, c,
+		"Rotate X down  : Num 5, Down arrow");
+	mlx_string_put(i->mlx_ptr, i->win_ptr, 1110, 900, c,
+		"Rotate Y right : Num 6, Right arow");
+	mlx_string_put(i->mlx_ptr, i->win_ptr, 1110, 920, c,
+		"Rotate Y left  : Num 4, Left arrow");
+	mlx_string_put(i->mlx_ptr, i->win_ptr, 1110, 940, c,
 		"Rotate Z right : Num 9");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 1220, 960, c,
+	mlx_string_put(i->mlx_ptr, i->win_ptr, 1110, 960, c,
 		"Rotate Z left  : Num 7");
 }
 
@@ -43,17 +43,15 @@ void	ft_putsize(t_window *i, int c)
 void	ft_putmove(t_window *i, int c)
 {
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 10, c,
-		"Move right     : Right arrow");
+		"Move right     : d");
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 30, c,
-		"Move left      : Left arrow");
+		"Move left      : a");
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 50, c,
-		"Move up        : Up arrow");
+		"Move up        : Shift");
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 70, c,
-		"Move down      : Down arrow");
-	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 70, c,
-		"Move down      : Down arrow");
+		"Move down      : Space");
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 90, c,
-		"Move forward : w (Perspective view)");
+		"Move forward   : w (Perspective view)");
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 110, c,
 		"Move backwards : s (Perspective view)");
 }

@@ -6,13 +6,11 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 13:50:01 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/28 18:09:50 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/08 17:07:35 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <time.h>
-#include <stdio.h>
 
 void	ft_set_persp(int key, t_window *infos)
 {
@@ -36,21 +34,21 @@ void	ft_set_persp(int key, t_window *infos)
 
 void	ft_keyrota(int key, t_window *infos)
 {
-	if (key == 91 || key == 87 || key == 88 ||
-		key == 86 || key == 92 || key == 89)
+	if (key == 91 || key == 87 || key == 88 || key == 126 || key == 125 ||
+		key == 86 || key == 92 || key == 89 || key == 123 || key == 124)
 	{
 		ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-		if (key == 91)
+		if (key == 91 || key == 126)
 			infos->state->rota.x += 0.1f;
-		else if (key == 87)
+		else if (key == 87 || key == 125)
 			infos->state->rota.x -= 0.1f;
 		else if (key == 88)
 			infos->state->rota.y += 0.1f;
 		else if (key == 86)
 			infos->state->rota.y -= 0.1f;
-		else if (key == 92)
+		else if (key == 92 || key == 123)
 			infos->state->rota.z -= 0.1f;
-		else if (key == 89)
+		else if (key == 89 || key == 124)
 			infos->state->rota.z += 0.1f;
 		ft_callback(infos);
 	}
@@ -83,17 +81,17 @@ void	ft_keysize(int key, t_window *infos)
 
 void	ft_keymove(int key, t_window *infos)
 {
-	if (key == 123 || key == 124 || key == 126 || key == 125 ||
-		key == 1 || key == 13)
+	if (key == 0 || key == 2 || key == 257 || key == 49 ||
+		key == 1 || key == 13 || key == 83 || key == 85)
 	{
 		ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
-		if (key == 123)
+		if (key == 2 || key == 83)
 			infos->state->pos.x -= 5;
-		else if (key == 124)
+		else if (key == 0 || key == 85)
 			infos->state->pos.x += 5;
-		else if (key == 126)
+		else if (key == 257)
 			infos->state->pos.y -= 5;
-		else if (key == 125)
+		else if (key == 49)
 			infos->state->pos.y += 5;
 		else if (key == 1)
 			infos->state->pos.z -= 5;
@@ -105,14 +103,11 @@ void	ft_keymove(int key, t_window *infos)
 
 int		ft_dealkey(int key, t_window *infos)
 {
-	static clock_t	last_time = 0.0;
-	char			*fps;
-
-	fps = NULL;
-	ft_putnbr(key);
-	ft_putchar('\n');
 	if (key == 53)
+	{
+		ft_free_infos(infos);
 		exit(0);
+	}
 	ft_keymove(key, infos);
 	ft_keysize(key, infos);
 	ft_keyrota(key, infos);
@@ -127,10 +122,5 @@ int		ft_dealkey(int key, t_window *infos)
 			infos->state = ft_fill_persp_state(infos->state);
 		ft_callback(infos);
 	}
-	asprintf(&fps, "%.2f", 1 / ((double)(clock() - last_time) / CLOCKS_PER_SEC));
-	mlx_string_put(infos->mlx_ptr, infos->win_ptr, 20, 300, 0xFFFFFF, "FPS: ");
-    mlx_string_put(infos->mlx_ptr, infos->win_ptr, 70, 300, 0xFFFFFF, fps);
-    free(fps);
-    last_time = clock();
 	return (0);
 }

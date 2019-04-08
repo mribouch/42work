@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 15:34:57 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/28 17:41:57 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/08 17:06:29 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,9 +149,9 @@ t_window		*ft_dezoom(t_window *infos);
 t_point			*ft_get_caval(t_point *vertices, t_map *mapinf,
 					t_var *var, t_window *infos);
 t_point			*ft_multmat(t_window *infos, t_mat4 rot);
-t_point			*ft_rotx(t_window *infos);
-t_point			*ft_roty(t_window *infos);
-t_point			*ft_rotz(t_window *infos);
+t_mat4			ft_rotx(t_window *infos);
+t_mat4			ft_roty(t_window *infos);
+t_mat4			ft_rotz(t_window *infos);
 void			ft_draw_new(t_window *infos);
 void			ft_draw_iso(t_window *infos);
 void			ft_draw_persp(t_window *infos);
@@ -161,5 +161,14 @@ void			ft_callback(t_window *infos);
 void			ft_bblue(void *s, size_t n);
 void			ft_bcolor(void *s, int color, size_t n);
 void			ft_putmenu(t_window *i);
+t_mat4			ft_multmat2(t_mat4 rot1, t_mat4 rot2);
+t_point			*ft_rot(t_window *infos);
+char			*ft_free_join(char *s1, const char *s2);
+void			ft_free_dchar(char **tab);
+void			ft_free_map(t_window *infos);
+void			ft_free_infos(t_window *infos);
+void			ft_free_inmap(t_window *infos);
+void			ft_free_fullline(char *full, char *line);
+char			*ft_fill_full(char *full, char *line, int *lenc);
 
 #endif

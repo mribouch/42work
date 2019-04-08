@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 13:12:42 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/28 17:35:49 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/04 16:17:22 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ t_point	*ft_isov(t_window *infos)
 	};
 	rot2 = (t_mat4)(struct s_mat4_data) {
 		1, 0, 0, 0,
-		0, cos(0.523599), -sin(0.523599), 0,
-		0, sin(0.523599), cos(0.523599), 0,
+		0, cos(0.954), -sin(0.954), 0,
+		0, sin(0.954), cos(0.954), 0,
 		0, 0, 0, 1
 	};
 	infos->iso = ft_multmat(infos, rot);
@@ -89,9 +89,7 @@ void	ft_callback(t_window *infos)
 
 	i = 0;
 	infos->iso = ft_changestat_size(infos);
-	infos->iso = ft_rotx(infos);
-	infos->iso = ft_roty(infos);
-	infos->iso = ft_rotz(infos);
+	infos->iso = ft_rot(infos);
 	if (infos->boolp == 0)
 		infos->iso = ft_isov(infos);
 	infos->iso = ft_changestat_pos(infos);

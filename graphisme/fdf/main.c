@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 18:19:25 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/28 16:57:43 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/08 17:05:13 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ t_window	*ft_create_infos(t_window *infos, int *fd, char **av)
 	if (!(infos = malloc(sizeof(t_window))))
 		return (0);
 	if (!(infos->mapinf = malloc(sizeof(t_map))))
+	{
+		free(infos);
 		return (0);
+	}
 	*fd = open(av[1], O_RDONLY);
 	if (*fd < 0)
 	{
@@ -48,9 +51,16 @@ t_window	*ft_fill_infos_point(t_window *infos, char **col)
 		return (0);
 	if (!(infos->iso = malloc(sizeof(t_point) *
 		(infos->mapinf->width * (infos->mapinf->height)) + 1)))
+	{
+		free(infos->vertices);
 		return (0);
+	}
 	if (!(infos->state = malloc(sizeof(t_state))))
+	{
+		free(infos->vertices);
+		free(infos->iso);
 		return (0);
+	}
 	infos->state = ft_fill_state(infos->state);
 	infos->boolp = 0;
 	infos->bcol = 0x000000;
@@ -69,7 +79,6 @@ t_window	*ft_fill_infos(t_window *infos)
 	infos->win_ptr = mlx_new_window(infos->mlx_ptr, 1500, 1000, "testwin");
 	infos->img = NULL;
 	infos->img_ptr = mlx_new_image(infos->mlx_ptr, 1500, 1000);
-	infos->img_ptr = infos->img_ptr;
 	infos->img = ft_get_img(infos->img, infos->img_ptr, infos);
 	return (infos);
 }
@@ -90,12 +99,13 @@ int			main(int ac, char **av)
 		infos = ft_fill_infos(infos);
 		if ((infos->mapinf = ft_read(fd, infos->mapinf, &col)) == 0)
 		{
+			ft_free_inmap(infos);
 			ft_putendl("Invalid file.");
 			exit(0);
 		}
 		infos = ft_fill_infos_point(infos, col);
+		ft_free_dchar(col);
 		mlx_hook(infos->win_ptr, 2, 1L << 0, ft_dealkey, infos);
-		//mlx_key_hook(infos->win_ptr, ft_dealkey, infos);
 		mlx_loop(infos->mlx_ptr);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 18:31:31 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/28 16:13:28 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/04 16:18:19 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_point	*ft_multmat(t_window *infos, t_mat4 rot)
 	return (infos->iso);
 }
 
-t_point	*ft_rotx(t_window *infos)
+t_mat4	ft_rotx(t_window *infos)
 {
 	t_mat4	rot;
 
@@ -47,11 +47,10 @@ t_point	*ft_rotx(t_window *infos)
 		0, sin(infos->state->rota.x), cos(infos->state->rota.x), 0,
 		0, 0, 0, 1
 	};
-	infos->iso = ft_multmat(infos, rot);
-	return (infos->iso);
+	return (rot);
 }
 
-t_point	*ft_roty(t_window *infos)
+t_mat4	ft_roty(t_window *infos)
 {
 	t_mat4	rot;
 
@@ -61,11 +60,10 @@ t_point	*ft_roty(t_window *infos)
 		-sin(infos->state->rota.y), 0, cos(infos->state->rota.y), 0,
 		0, 0, 0, 1
 	};
-	infos->iso = ft_multmat(infos, rot);
-	return (infos->iso);
+	return (rot);
 }
 
-t_point	*ft_rotz(t_window *infos)
+t_mat4	ft_rotz(t_window *infos)
 {
 	t_mat4	rot;
 
@@ -75,6 +73,21 @@ t_point	*ft_rotz(t_window *infos)
 		0, 0, 1, 0,
 		0, 0, 0, 1
 	};
-	infos->iso = ft_multmat(infos, rot);
+	return (rot);
+}
+
+t_point	*ft_rot(t_window *infos)
+{
+	t_mat4	rotx;
+	t_mat4	roty;
+	t_mat4	rotz;
+	t_mat4	res;
+
+	rotx = ft_rotx(infos);
+	roty = ft_roty(infos);
+	rotz = ft_rotz(infos);
+	res = ft_multmat2(rotx, roty);
+	res = ft_multmat2(res, rotz);
+	infos->iso = ft_multmat(infos, res);
 	return (infos->iso);
 }
