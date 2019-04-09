@@ -6,11 +6,26 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 13:14:18 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/04 16:00:31 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/09 14:46:53 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int			ft_fill_res(char *res, char *full, int i, int k)
+{
+	int ret;
+
+	while ((full[k] >= '0' && full[k] <= '9') && full[k] != '\n')
+	{
+		res[i] = full[k];
+		k++;
+		i++;
+	}
+	res[i] = '\0';
+	ret = ft_atoi(res);
+	return (ret);
+}
 
 int			*ft_get_img(int *img, void *img_ptr, t_window *infos)
 {
@@ -57,24 +72,24 @@ int			ft_get_num(char *full, int k)
 	char	*res;
 	int		i;
 	int		ret;
+	int		sign;
 
 	i = 0;
-	while (full[k] < '0' || full[k] > '9')
-		k++;
+	sign = 0;
 	while (full[k] >= '0' && full[k++] <= '9')
 		i++;
 	k = k - i;
-	if (!(res = malloc(sizeof(char) * (i + 1))))
+	if (full[k - 1] == '-')
+		sign = 1;
+	if (!(res = malloc(sizeof(char) * (i + 1 + sign))))
 		return (0);
 	i = 0;
-	while ((full[k] >= '0' && full[k] <= '9') && full[k] != '\n')
+	if (sign == 1)
 	{
-		res[i] = full[k];
-		k++;
+		res[0] = '-';
 		i++;
 	}
-	res[i] = '\0';
-	ret = ft_atoi(res);
+	ret = ft_fill_res(res, full, i, k);
 	free(res);
 	return (ret);
 }

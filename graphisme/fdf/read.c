@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 12:32:07 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/08 17:04:37 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/09 18:04:42 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,18 @@ char		*ft_create_full(int fd)
 	lenc = 0;
 	full = ft_strnew(1);
 	get_next_line(fd, &line);
-	if (ft_rd_nbc(line) == -1)
+	if (ft_parse_error(line) == 0)
 	{
 		ft_free_fullline(full, line);
 		return (0);
 	}
+	if (ft_check_error(full, line) == 0)
+		return (0);
 	full = ft_fill_full(full, line, &lenc);
 	while (get_next_line(fd, &line) > 0)
 	{
-		if (ft_rd_nbc(line) == -1 || lenc != ft_rd_nbc(line))
-		{
-			ft_free_fullline(full, line);
+		if (ft_parse_line(full, line, lenc) == 0)
 			return (0);
-		}
 		full = ft_free_join(full, line);
 		free(line);
 		full = ft_free_join(full, "\n");
@@ -106,10 +105,9 @@ t_map		*ft_read(int fd, t_map *mapinf, char ***col)
 		return (0);
 	while (nbl > 0)
 	{
-		if (!(mapinf->map[i] = malloc(sizeof(int) * (mapinf->width + 1))))
+		if (!(mapinf->map[i++] = malloc(sizeof(int) * (mapinf->width + 1))))
 			return (0);
 		nbl--;
-		i++;
 	}
 	*col = ft_get_col(allpoint, *col);
 	mapinf->map = ft_fill_map(mapinf, full);

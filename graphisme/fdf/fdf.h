@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 15:34:57 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/08 17:06:29 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/09 17:56:46 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,10 @@ int				ft_dealkey(int key, t_window *infos);
 t_map			*ft_read(int fd, t_map *mapinf, char ***col);
 int				ft_rd_nbc(char *full);
 int				ft_rd_nbl(char *full);
+int				ft_check_char(char *line);
+int				ft_parse_line(char *full, char *line, int lenc);
+int				ft_parse_error(char *line);
+int				ft_check_error(char *full, char *line);
 void			ft_set_color(int key, t_window *infos);
 void			ft_draw(t_window *infos);
 t_state			*ft_fill_state(t_state *state);
