@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 13:14:18 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/09 14:46:53 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/10 14:35:57 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int			ft_get_num(char *full, int k)
 		i++;
 	}
 	ret = ft_fill_res(res, full, i, k);
+	(ret > 100000 ? ret = 100000 : 0);
+	(ret < -100000 ? ret = -100000 : 0);
 	free(res);
 	return (ret);
 }
