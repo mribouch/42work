@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 15:26:33 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/26 17:53:15 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/10 12:15:18 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,32 +63,6 @@ void	ft_draw_iso(t_window *infos)
 			if (i < infos->mapinf->height - 1)
 				ft_line_new(infos, infos->iso[v],
 			infos->iso[v + infos->mapinf->width]);
-			v++;
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-}
-
-void	ft_draw_new(t_window *infos)
-{
-	int	i;
-	int	j;
-	int	v;
-
-	i = 0;
-	j = 0;
-	v = 0;
-	while (i < infos->mapinf->height)
-	{
-		while (j < infos->mapinf->width)
-		{
-			if (j < infos->mapinf->width - 1)
-				ft_line_new(infos, infos->vertices[v], infos->vertices[v + 1]);
-			if (i < infos->mapinf->height - 1)
-				ft_line_new(infos, infos->vertices[v],
-					infos->vertices[v + infos->mapinf->width]);
 			v++;
 			j++;
 		}

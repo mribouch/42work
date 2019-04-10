@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 12:51:39 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/29 13:40:08 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/10 12:02:59 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	ft_putrotate(t_window *i, int c)
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 1110, 880, c,
 		"Rotate X down  : Num 5, Down arrow");
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 1110, 900, c,
-		"Rotate Y right : Num 6, Right arow");
+		"Rotate Y right : Num 6");
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 1110, 920, c,
-		"Rotate Y left  : Num 4, Left arrow");
+		"Rotate Y left  : Num 4");
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 1110, 940, c,
-		"Rotate Z right : Num 9");
+		"Rotate Z right : Num 9, Right arow");
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 1110, 960, c,
-		"Rotate Z left  : Num 7");
+		"Rotate Z left  : Num 7, Left arrow");
 }
 
 void	ft_putsize(t_window *i, int c)

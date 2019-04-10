@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 15:57:45 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/25 17:08:16 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/10 11:38:54 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,6 @@ void	ft_set_color(int key, t_window *infos)
 			infos->bcol = 0x540000;
 		ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
 		ft_callback(infos);
-	}
-}
-
-void	ft_bblue(void *s, size_t n)
-{
-	size_t i;
-
-	i = 0;
-	while (i < n)
-	{
-		((int *)s)[i] = 0x005B5D;
-		i++;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 13:12:42 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/04 16:17:22 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/10 12:31:43 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,6 @@ t_point	*ft_changestat_size(t_window *infos)
 
 void	ft_callback(t_window *infos)
 {
-	int i;
-
-	i = 0;
 	infos->iso = ft_changestat_size(infos);
 	infos->iso = ft_rot(infos);
 	if (infos->boolp == 0)

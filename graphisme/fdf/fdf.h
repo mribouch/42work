@@ -6,17 +6,13 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 15:34:57 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/09 17:56:46 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/10 12:39:09 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# include <sys/types.h>
-# include <sys/stat.h>
 # include <fcntl.h>
-# include <stdlib.h>
-# include <OpenGl/gl.h>
 # include "libft/libft.h"
 # include "minilibx_macos/mlx.h"
 
@@ -156,13 +152,11 @@ t_point			*ft_multmat(t_window *infos, t_mat4 rot);
 t_mat4			ft_rotx(t_window *infos);
 t_mat4			ft_roty(t_window *infos);
 t_mat4			ft_rotz(t_window *infos);
-void			ft_draw_new(t_window *infos);
 void			ft_draw_iso(t_window *infos);
 void			ft_draw_persp(t_window *infos);
 t_point			*ft_iso(t_window *infos);
 t_point			*ft_isov(t_window *infos);
 void			ft_callback(t_window *infos);
-void			ft_bblue(void *s, size_t n);
 void			ft_bcolor(void *s, int color, size_t n);
 void			ft_putmenu(t_window *i);
 t_mat4			ft_multmat2(t_mat4 rot1, t_mat4 rot2);
