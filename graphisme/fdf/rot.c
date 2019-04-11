@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 18:31:31 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/04 16:18:19 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:44:34 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_point	*ft_multmat(t_window *infos, t_mat4 rot)
 	return (infos->iso);
 }
 
-t_mat4	ft_rotx(t_window *infos)
+static t_mat4	ft_rotx(t_window *infos)
 {
 	t_mat4	rot;
 
@@ -50,7 +50,7 @@ t_mat4	ft_rotx(t_window *infos)
 	return (rot);
 }
 
-t_mat4	ft_roty(t_window *infos)
+static t_mat4	ft_roty(t_window *infos)
 {
 	t_mat4	rot;
 
@@ -63,7 +63,7 @@ t_mat4	ft_roty(t_window *infos)
 	return (rot);
 }
 
-t_mat4	ft_rotz(t_window *infos)
+static t_mat4	ft_rotz(t_window *infos)
 {
 	t_mat4	rot;
 
@@ -76,7 +76,7 @@ t_mat4	ft_rotz(t_window *infos)
 	return (rot);
 }
 
-t_point	*ft_rot(t_window *infos)
+t_point			*ft_rot(t_window *infos)
 {
 	t_mat4	rotx;
 	t_mat4	roty;

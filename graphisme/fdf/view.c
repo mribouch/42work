@@ -6,14 +6,14 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 13:12:42 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/10 12:31:43 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:47:59 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <math.h>
 
-t_point	*ft_isov(t_window *infos)
+static t_point	*ft_isov(t_window *infos)
 {
 	t_mat4	rot;
 	t_mat4	rot2;
@@ -35,7 +35,7 @@ t_point	*ft_isov(t_window *infos)
 	return (infos->iso);
 }
 
-t_point	*ft_persp(t_window *infos, float fov)
+static t_point	*ft_persp(t_window *infos, float fov)
 {
 	int	i;
 
@@ -53,7 +53,7 @@ t_point	*ft_persp(t_window *infos, float fov)
 	return (infos->iso);
 }
 
-t_point	*ft_changestat_pos(t_window *infos)
+static t_point	*ft_changestat_pos(t_window *infos)
 {
 	int	i;
 
@@ -68,7 +68,7 @@ t_point	*ft_changestat_pos(t_window *infos)
 	return (infos->iso);
 }
 
-t_point	*ft_changestat_size(t_window *infos)
+static t_point	*ft_changestat_size(t_window *infos)
 {
 	int	i;
 

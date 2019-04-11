@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 15:34:57 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/10 12:39:09 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:49:38 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,6 @@ t_state			*ft_fill_persp_state(t_state *state);
 int				ft_lerp(int i, int color1, int color2, float nbp);
 void			ft_line_new(t_window *infos, t_point vertices1,
 					t_point vertices2);
-int				*ft_fill_pixel_new(t_window *infos, t_var c,
-					t_bresen b, float nbp);
 int				*ft_get_img(int *img, void *img_ptr, t_window *infos);
 char			**ft_get_col(char **allpoint, char **col);
 int				ft_get_num(char *full, int k);
@@ -149,13 +147,9 @@ t_window		*ft_dezoom(t_window *infos);
 t_point			*ft_get_caval(t_point *vertices, t_map *mapinf,
 					t_var *var, t_window *infos);
 t_point			*ft_multmat(t_window *infos, t_mat4 rot);
-t_mat4			ft_rotx(t_window *infos);
-t_mat4			ft_roty(t_window *infos);
-t_mat4			ft_rotz(t_window *infos);
 void			ft_draw_iso(t_window *infos);
 void			ft_draw_persp(t_window *infos);
 t_point			*ft_iso(t_window *infos);
-t_point			*ft_isov(t_window *infos);
 void			ft_callback(t_window *infos);
 void			ft_bcolor(void *s, int color, size_t n);
 void			ft_putmenu(t_window *i);
@@ -163,7 +157,6 @@ t_mat4			ft_multmat2(t_mat4 rot1, t_mat4 rot2);
 t_point			*ft_rot(t_window *infos);
 char			*ft_free_join(char *s1, const char *s2);
 void			ft_free_dchar(char **tab);
-void			ft_free_map(t_window *infos);
 void			ft_free_infos(t_window *infos);
 void			ft_free_inmap(t_window *infos);
 void			ft_free_fullline(char *full, char *line);

@@ -6,13 +6,13 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 16:36:30 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/02 17:47:59 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:00:06 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_mat4	ft_matmult_fline(t_mat4 rot1, t_mat4 rot2, t_mat4 res)
+static t_mat4	ft_matmult_fline(t_mat4 rot1, t_mat4 rot2, t_mat4 res)
 {
 	res.d.m00 = rot1.d.m00 * rot2.d.m00 + rot1.d.m01 * rot2.d.m10 +
 		rot1.d.m02 * rot2.d.m20 + rot1.d.m03 * rot2.d.m30;
@@ -25,7 +25,7 @@ t_mat4	ft_matmult_fline(t_mat4 rot1, t_mat4 rot2, t_mat4 res)
 	return (res);
 }
 
-t_mat4	ft_matmult_dline(t_mat4 rot1, t_mat4 rot2, t_mat4 res)
+static t_mat4	ft_matmult_dline(t_mat4 rot1, t_mat4 rot2, t_mat4 res)
 {
 	res.d.m10 = rot1.d.m10 * rot2.d.m00 + rot1.d.m11 * rot2.d.m10 +
 		rot1.d.m12 * rot2.d.m20 + rot1.d.m13 * rot2.d.m30;
@@ -38,7 +38,7 @@ t_mat4	ft_matmult_dline(t_mat4 rot1, t_mat4 rot2, t_mat4 res)
 	return (res);
 }
 
-t_mat4	ft_matmult_tline(t_mat4 rot1, t_mat4 rot2, t_mat4 res)
+static t_mat4	ft_matmult_tline(t_mat4 rot1, t_mat4 rot2, t_mat4 res)
 {
 	res.d.m20 = rot1.d.m20 * rot2.d.m00 + rot1.d.m21 * rot2.d.m10 +
 		rot1.d.m22 * rot2.d.m20 + rot1.d.m23 * rot2.d.m30;
@@ -51,7 +51,7 @@ t_mat4	ft_matmult_tline(t_mat4 rot1, t_mat4 rot2, t_mat4 res)
 	return (res);
 }
 
-t_mat4	ft_matmult_qline(t_mat4 rot1, t_mat4 rot2, t_mat4 res)
+static t_mat4	ft_matmult_qline(t_mat4 rot1, t_mat4 rot2, t_mat4 res)
 {
 	res.d.m30 = rot1.d.m30 * rot2.d.m00 + rot1.d.m31 * rot2.d.m10 +
 		rot1.d.m32 * rot2.d.m20 + rot1.d.m33 * rot2.d.m30;
@@ -64,7 +64,7 @@ t_mat4	ft_matmult_qline(t_mat4 rot1, t_mat4 rot2, t_mat4 res)
 	return (res);
 }
 
-t_mat4	ft_multmat2(t_mat4 rot1, t_mat4 rot2)
+t_mat4			ft_multmat2(t_mat4 rot1, t_mat4 rot2)
 {
 	t_mat4 res;
 

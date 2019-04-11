@@ -6,13 +6,13 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 12:32:07 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/10 14:18:34 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:35:16 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_map		*ft_fill_sizem(t_map *mapinf, int *nbl, char *full)
+static t_map	*ft_fill_sizem(t_map *mapinf, int *nbl, char *full)
 {
 	mapinf->height = ft_rd_nbl(full);
 	mapinf->width = ft_rd_nbc(full);
@@ -20,7 +20,7 @@ t_map		*ft_fill_sizem(t_map *mapinf, int *nbl, char *full)
 	return (mapinf);
 }
 
-int			**ft_fill_map2(t_map *mapinf, char *full, int k, int nbl)
+static int	**ft_fill_map2(t_map *mapinf, char *full, int k, int nbl)
 {
 	int	i;
 
@@ -49,7 +49,7 @@ int			**ft_fill_map2(t_map *mapinf, char *full, int k, int nbl)
 	return (mapinf->map);
 }
 
-int			**ft_fill_map(t_map *mapinf, char *full)
+static int	**ft_fill_map(t_map *mapinf, char *full)
 {
 	int		k;
 	int		nbl;
@@ -60,7 +60,7 @@ int			**ft_fill_map(t_map *mapinf, char *full)
 	return (mapinf->map);
 }
 
-char		*ft_create_full(int fd)
+static char	*ft_create_full(int fd)
 {
 	char	*line;
 	char	*full;

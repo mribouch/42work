@@ -6,14 +6,14 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 18:13:11 by mribouch          #+#    #+#             */
-/*   Updated: 2019/03/27 16:53:52 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 13:40:22 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <math.h>
 
-int		*ft_fill_pixel_new(t_window *infos, t_var c, t_bresen b, float nbp)
+static int	*ft_fill_pixel_new(t_window *infos, t_var c, t_bresen b, float nbp)
 {
 	int		i;
 	float	x;
@@ -29,7 +29,7 @@ int		*ft_fill_pixel_new(t_window *infos, t_var c, t_bresen b, float nbp)
 	return (infos->img);
 }
 
-void	ft_sec_c(t_bresen *b, t_window *infos, t_point v1, t_point v2)
+static void	ft_sec_c(t_bresen *b, t_window *infos, t_point v1, t_point v2)
 {
 	t_var	c;
 
@@ -50,7 +50,7 @@ void	ft_sec_c(t_bresen *b, t_window *infos, t_point v1, t_point v2)
 	}
 }
 
-void	ft_first_c(t_bresen *b, t_window *infos, t_point v1, t_point v2)
+static void	ft_first_c(t_bresen *b, t_window *infos, t_point v1, t_point v2)
 {
 	t_var	c;
 

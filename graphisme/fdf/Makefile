@@ -6,7 +6,7 @@
 #    By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 12:52:28 by mribouch          #+#    #+#              #
-#    Updated: 2019/04/09 18:37:50 by mribouch         ###   ########.fr        #
+#    Updated: 2019/04/11 14:29:44 by mribouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS = main.c		\
 	   split.c		\
 	   key.c		\
 	   color.c		\
-	   new.c		\
+	   draw.c		\
 	   view.c		\
 	   rot.c		\
 	   free.c		\

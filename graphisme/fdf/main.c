@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 18:19:25 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/08 17:05:13 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 13:35:41 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_state		*ft_fill_state(t_state *state)
 	return (state);
 }
 
-t_window	*ft_create_infos(t_window *infos, int *fd, char **av)
+static t_window	*ft_create_infos(t_window *infos, int *fd, char **av)
 {
 	if (!(infos = malloc(sizeof(t_window))))
 		return (0);
@@ -44,7 +44,7 @@ t_window	*ft_create_infos(t_window *infos, int *fd, char **av)
 	return (infos);
 }
 
-t_window	*ft_fill_infos_point(t_window *infos, char **col)
+static t_window	*ft_fill_infos_point(t_window *infos, char **col)
 {
 	if (!(infos->vertices = malloc(sizeof(t_point) *
 		(infos->mapinf->width * (infos->mapinf->height)) + 1)))
@@ -71,7 +71,7 @@ t_window	*ft_fill_infos_point(t_window *infos, char **col)
 	return (infos);
 }
 
-t_window	*ft_fill_infos(t_window *infos)
+static t_window	*ft_fill_infos(t_window *infos)
 {
 	infos->mlx_ptr = mlx_init();
 	infos->height = 1000;

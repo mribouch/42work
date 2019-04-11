@@ -6,13 +6,13 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 15:26:13 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/03 15:23:12 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:46:07 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		ft_numwords(char *str)
+static int	ft_numwords(char *str)
 {
 	int p;
 	int i;
@@ -36,7 +36,7 @@ int		ft_numwords(char *str)
 	return (p);
 }
 
-int		ft_lenword(char *str, int index)
+static int	ft_lenword(char *str, int index)
 {
 	int len;
 
@@ -49,7 +49,7 @@ int		ft_lenword(char *str, int index)
 	return (len);
 }
 
-char	**ft_strsplit_fdf(char *str)
+char		**ft_strsplit_fdf(char *str)
 {
 	char	**split;
 	int		i;

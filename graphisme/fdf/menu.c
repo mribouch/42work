@@ -6,13 +6,13 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 12:51:39 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/10 12:02:59 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:01:09 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_putrotate(t_window *i, int c)
+static void	ft_putrotate(t_window *i, int c)
 {
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 1110, 860, c,
 		"Rotate X up    : Num 8, Up arrow");
@@ -28,7 +28,7 @@ void	ft_putrotate(t_window *i, int c)
 		"Rotate Z left  : Num 7, Left arrow");
 }
 
-void	ft_putsize(t_window *i, int c)
+static void	ft_putsize(t_window *i, int c)
 {
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 1300, 10, c,
 		"Zoom In  : Num +");
@@ -40,14 +40,14 @@ void	ft_putsize(t_window *i, int c)
 		"Less altitude : -");
 }
 
-void	ft_putmove(t_window *i, int c)
+static void	ft_putmove(t_window *i, int c)
 {
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 10, c,
 		"Move right     : d");
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 30, c,
 		"Move left      : a");
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 50, c,
-		"Move up        : Shift");
+		"Move up        : x");
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 70, c,
 		"Move down      : Space");
 	mlx_string_put(i->mlx_ptr, i->win_ptr, 10, 90, c,
@@ -56,7 +56,7 @@ void	ft_putmove(t_window *i, int c)
 		"Move backwards : s (Perspective view)");
 }
 
-void	ft_putmenu(t_window *i)
+void		ft_putmenu(t_window *i)
 {
 	int	c;
 

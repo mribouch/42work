@@ -6,13 +6,13 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 13:14:18 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/10 14:35:57 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 13:56:27 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int			ft_fill_res(char *res, char *full, int i, int k)
+static int	ft_fill_res(char *res, char *full, int i, int k)
 {
 	int ret;
 

@@ -6,13 +6,13 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 13:50:01 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/09 18:05:25 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:50:29 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_set_persp(int key, t_window *infos)
+static void	ft_set_persp(int key, t_window *infos)
 {
 	if (key == 35)
 	{
@@ -32,7 +32,7 @@ void	ft_set_persp(int key, t_window *infos)
 	}
 }
 
-void	ft_keyrota(int key, t_window *infos)
+static void	ft_keyrota(int key, t_window *infos)
 {
 	if (key == 91 || key == 87 || key == 88 || key == 126 || key == 125 ||
 		key == 86 || key == 92 || key == 89 || key == 123 || key == 124)
@@ -54,7 +54,7 @@ void	ft_keyrota(int key, t_window *infos)
 	}
 }
 
-void	ft_keysize(int key, t_window *infos)
+static void	ft_keysize(int key, t_window *infos)
 {
 	if (key == 24 || key == 27 || key == 69 || key == 78)
 	{
@@ -79,9 +79,9 @@ void	ft_keysize(int key, t_window *infos)
 	}
 }
 
-void	ft_keymove(int key, t_window *infos)
+static void	ft_keymove(int key, t_window *infos)
 {
-	if (key == 0 || key == 2 || key == 257 || key == 49 ||
+	if (key == 0 || key == 2 || key == 7 || key == 49 ||
 		key == 1 || key == 13 || key == 83 || key == 85)
 	{
 		ft_bcolor(infos->img, infos->bcol, (infos->height * infos->width));
@@ -89,7 +89,7 @@ void	ft_keymove(int key, t_window *infos)
 			infos->state->pos.x -= 5;
 		else if (key == 0 || key == 85)
 			infos->state->pos.x += 5;
-		else if (key == 257)
+		else if (key == 7)
 			infos->state->pos.y -= 5;
 		else if (key == 49)
 			infos->state->pos.y += 5;
@@ -101,7 +101,7 @@ void	ft_keymove(int key, t_window *infos)
 	}
 }
 
-int		ft_dealkey(int key, t_window *infos)
+int			ft_dealkey(int key, t_window *infos)
 {
 	if (key == 53)
 	{
