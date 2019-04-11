@@ -6,14 +6,14 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 18:31:31 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/11 14:44:34 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:57:33 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <math.h>
 
-t_point	*ft_multmat(t_window *infos, t_mat4 rot)
+t_point			*ft_multmat(t_window *infos, t_mat4 rot)
 {
 	int		i;
 	float	x;

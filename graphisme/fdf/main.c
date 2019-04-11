@@ -6,13 +6,13 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 18:19:25 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/11 13:35:41 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:56:18 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_state		*ft_fill_state(t_state *state)
+t_state			*ft_fill_state(t_state *state)
 {
 	state->size.x = 1;
 	state->size.y = 1;
@@ -83,7 +83,7 @@ static t_window	*ft_fill_infos(t_window *infos)
 	return (infos);
 }
 
-int			main(int ac, char **av)
+int				main(int ac, char **av)
 {
 	int			fd;
 	char		**col;

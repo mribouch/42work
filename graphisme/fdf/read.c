@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 12:32:07 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/11 14:35:16 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:56:47 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_map	*ft_fill_sizem(t_map *mapinf, int *nbl, char *full)
 	return (mapinf);
 }
 
-static int	**ft_fill_map2(t_map *mapinf, char *full, int k, int nbl)
+static int		**ft_fill_map2(t_map *mapinf, char *full, int k, int nbl)
 {
 	int	i;
 
@@ -49,7 +49,7 @@ static int	**ft_fill_map2(t_map *mapinf, char *full, int k, int nbl)
 	return (mapinf->map);
 }
 
-static int	**ft_fill_map(t_map *mapinf, char *full)
+static int		**ft_fill_map(t_map *mapinf, char *full)
 {
 	int		k;
 	int		nbl;
@@ -60,7 +60,7 @@ static int	**ft_fill_map(t_map *mapinf, char *full)
 	return (mapinf->map);
 }
 
-static char	*ft_create_full(int fd)
+static char		*ft_create_full(int fd)
 {
 	char	*line;
 	char	*full;
@@ -88,7 +88,7 @@ static char	*ft_create_full(int fd)
 	return (full);
 }
 
-t_map		*ft_read(int fd, t_map *mapinf, char ***col)
+t_map			*ft_read(int fd, t_map *mapinf, char ***col)
 {
 	int		nbl;
 	int		i;

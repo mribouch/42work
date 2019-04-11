@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 15:26:33 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/11 14:30:46 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:56:03 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void		ft_draw_persp(t_window *infos)
 		i++;
 	}
 }
-
 
 void		ft_draw_iso(t_window *infos)
 {

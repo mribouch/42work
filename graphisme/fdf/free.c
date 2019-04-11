@@ -6,13 +6,13 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 15:32:41 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/11 13:48:20 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:55:01 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_free_inmap(t_window *infos)
+void		ft_free_inmap(t_window *infos)
 {
 	free(infos->mapinf);
 	mlx_destroy_image(infos->mlx_ptr, infos->img_ptr);
@@ -21,7 +21,7 @@ void	ft_free_inmap(t_window *infos)
 	free(infos);
 }
 
-void	ft_free_dchar(char **tab)
+void		ft_free_dchar(char **tab)
 {
 	int	i;
 
@@ -34,7 +34,7 @@ void	ft_free_dchar(char **tab)
 	free(tab);
 }
 
-char	*ft_free_join(char *s1, const char *s2)
+char		*ft_free_join(char *s1, const char *s2)
 {
 	char	*s3;
 	int		i;
@@ -70,7 +70,7 @@ static void	ft_free_map(t_window *infos)
 	free(infos->mapinf->map);
 }
 
-void	ft_free_infos(t_window *infos)
+void		ft_free_infos(t_window *infos)
 {
 	mlx_destroy_image(infos->mlx_ptr, infos->img_ptr);
 	mlx_destroy_window(infos->mlx_ptr, infos->win_ptr);

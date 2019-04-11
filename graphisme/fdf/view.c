@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 13:12:42 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/11 14:47:59 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:57:14 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static t_point	*ft_changestat_size(t_window *infos)
 	return (infos->iso);
 }
 
-void	ft_callback(t_window *infos)
+void			ft_callback(t_window *infos)
 {
 	infos->iso = ft_changestat_size(infos);
 	infos->iso = ft_rot(infos);
