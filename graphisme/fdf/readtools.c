@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:56:16 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/11 14:43:25 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:28:32 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ int		ft_check_char(char *line)
 		|| (line[i] >= 'a' && line[i] <= 'f') || line[i] == '-')
 			i++;
 		else
+		{
 			return (0);
+		}
 	}
 	return (1);
 }

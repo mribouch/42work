@@ -6,7 +6,7 @@
 #    By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 12:52:28 by mribouch          #+#    #+#              #
-#    Updated: 2019/04/11 14:29:44 by mribouch         ###   ########.fr        #
+#    Updated: 2019/04/11 20:11:36 by mribouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ MLX = minilibx_macos/libmlx.a
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX)
+$(NAME): $(OBJS) $(LIBFT) $(MLX) fdf.h
 	gcc $(FLAGS) $(MLX) $(LIBFT) $(OBJS) \
 	-framework OpenGL -framework Appkit -o fdf
 

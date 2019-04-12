@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 15:34:57 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/11 14:49:38 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/11 20:11:30 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ int				ft_check_char(char *line);
 int				ft_parse_line(char *full, char *line, int lenc);
 int				ft_parse_error(char *line);
 int				ft_check_error(char *full, char *line);
+int				ft_check_return(char *line, char *full);
 void			ft_set_color(int key, t_window *infos);
 void			ft_draw(t_window *infos);
 t_state			*ft_fill_state(t_state *state);
