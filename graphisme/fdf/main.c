@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 18:19:25 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/12 13:25:58 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/19 18:13:50 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int				main(int ac, char **av)
 	int			fd;
 	char		**col;
 	t_window	*infos;
+	t_map		*tmp;
 
 	if (ac != 2)
 		ft_putendl("usage : ./fdf file_name");
@@ -96,13 +97,14 @@ int				main(int ac, char **av)
 		infos = NULL;
 		fd = 0;
 		infos = ft_create_infos(infos, &fd, av);
-		infos = ft_fill_infos(infos);
+		tmp = infos->mapinf;
 		if ((infos->mapinf = ft_read(fd, infos->mapinf, &col)) == 0)
 		{
-			ft_free_inmap(infos);
+			ft_free_nvfile(infos, tmp);
 			ft_putendl("Invalid file.");
 			exit(0);
 		}
+		infos = ft_fill_infos(infos);
 		infos = ft_fill_infos_point(infos, col);
 		ft_free_dchar(col);
 		mlx_hook(infos->win_ptr, 2, 1L << 0, ft_dealkey, infos);

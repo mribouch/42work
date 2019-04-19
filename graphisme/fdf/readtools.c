@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:56:16 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/11 19:28:32 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/19 18:12:52 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int		ft_check_error(char *full, char *line)
 
 void	ft_free_fullline(char *full, char *line)
 {
-	free(full);
-	free(line);
+	ft_strdel(&full);
+	ft_strdel(&line);
 }
 
 char	*ft_fill_full(char *full, char *line, int *lenc)

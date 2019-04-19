@@ -6,19 +6,17 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 15:32:41 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/11 19:20:22 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/19 18:14:18 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		ft_free_inmap(t_window *infos)
+void		ft_free_nvfile(t_window *infos, t_map *tmp)
 {
 	free(infos->mapinf);
-	mlx_destroy_image(infos->mlx_ptr, infos->img_ptr);
-	mlx_destroy_window(infos->mlx_ptr, infos->win_ptr);
-	free(infos->mlx_ptr);
 	free(infos);
+	free(tmp);
 }
 
 void		ft_free_dchar(char **tab)

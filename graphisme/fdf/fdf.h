@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 15:34:57 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/11 20:11:30 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/19 18:12:45 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,8 +159,8 @@ t_point			*ft_rot(t_window *infos);
 char			*ft_free_join(char *s1, const char *s2);
 void			ft_free_dchar(char **tab);
 void			ft_free_infos(t_window *infos);
-void			ft_free_inmap(t_window *infos);
 void			ft_free_fullline(char *full, char *line);
+void			ft_free_nvfile(t_window *infos, t_map *tmp);
 char			*ft_fill_full(char *full, char *line, int *lenc);
 
 #endif
