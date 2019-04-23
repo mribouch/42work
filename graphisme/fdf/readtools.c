@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:56:16 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/19 18:12:52 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/23 14:55:13 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ int		ft_check_char(char *line)
 	i = 0;
 	while (line[i] != '\0')
 	{
-		if (line[i] == 'x' || (line[i] >= '0' && line[i] <= '9') ||
-		line[i] == ' ' || line[i] == ',' || (line[i] >= 'A' && line[i] <= 'F')
-		|| (line[i] >= 'a' && line[i] <= 'f') || line[i] == '-')
+		if (line[i] == 'x' || (line[i] >= '0' && line[i] <= '9')
+			|| line[i] == ' ' || line[i] == ','
+				|| (line[i] >= 'A' && line[i] <= 'F')
+					|| (line[i] >= 'a' && line[i] <= 'f') || line[i] == '-')
 			i++;
 		else
 		{

@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 18:36:13 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/19 17:57:33 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/23 14:40:40 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int		ft_check_color(char *line, int i)
 
 	j = 0;
 	c = 10;
-	if ((line[i] >= 'a' && line[i] <= 'f') ||
-	(line[i] >= 'A' && line[i] <= 'F'))
+	if ((line[i] >= 'a' && line[i] <= 'f')
+		|| (line[i] >= 'A' && line[i] <= 'F'))
 	{
 		while (c != 0)
 		{
@@ -44,8 +44,8 @@ int		ft_parse_error(char *line)
 	j = 0;
 	while (line[i] != '\0')
 	{
-		if ((line[i] == ',') && ((line[i - 1] < '0' || line[i - 1] > '9') ||
-			line[i + 2] != 'x'))
+		if ((line[i] == ',') && ((line[i - 1] < '0' || line[i - 1] > '9')
+			|| line[i + 2] != 'x'))
 			return (0);
 		if ((line[i] == 'x') && (line[i - 1] != '0' || line[i - 2] != ','))
 			return (0);

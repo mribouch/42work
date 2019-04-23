@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 15:26:33 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/11 14:56:03 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/19 18:41:40 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static int	ft_over_z(t_window *infos, int v)
 static int	ft_over(t_window *infos, t_point p)
 {
 	(void)infos;
-	if (p.y < infos->height * -1 / 2 || p.y > infos->height / 2 ||
-	p.x > infos->width / 2 || p.x < infos->width / 2 * -1)
+	if (p.y < infos->height * -1 / 2 || p.y > infos->height / 2
+		|| p.x > infos->width / 2 || p.x < infos->width / 2 * -1)
 		return (0);
 	return (1);
 }
@@ -41,11 +41,11 @@ void		ft_draw_persp(t_window *infos)
 	{
 		while (j < infos->mapinf->width)
 		{
-			if (j < infos->mapinf->width - 1 && ft_over_z(infos, v) == 0 &&
-			ft_over(infos, infos->iso[v + 1]) == 1)
+			if (j < infos->mapinf->width - 1 && ft_over_z(infos, v) == 0
+				&& ft_over(infos, infos->iso[v + 1]) == 1)
 				ft_line_new(infos, infos->iso[v], infos->iso[v + 1]);
-			if (i < infos->mapinf->height - 1 && ft_over_z(infos, v) == 0 &&
-			ft_over(infos, infos->iso[v + infos->mapinf->width]) == 1)
+			if (i < infos->mapinf->height - 1 && ft_over_z(infos, v) == 0
+				&& ft_over(infos, infos->iso[v + infos->mapinf->width]) == 1)
 				ft_line_new(infos, infos->iso[v],
 			infos->iso[v + infos->mapinf->width]);
 			v++;
@@ -69,11 +69,11 @@ void		ft_draw_iso(t_window *infos)
 	{
 		while (j < infos->mapinf->width)
 		{
-			if (j < infos->mapinf->width - 1 &&
-			ft_over(infos, infos->iso[v + 1]) == 1)
+			if (j < infos->mapinf->width - 1
+				&& ft_over(infos, infos->iso[v + 1]) == 1)
 				ft_line_new(infos, infos->iso[v], infos->iso[v + 1]);
-			if (i < infos->mapinf->height - 1 &&
-			ft_over(infos, infos->iso[v + infos->mapinf->width]) == 1)
+			if (i < infos->mapinf->height - 1
+				&& ft_over(infos, infos->iso[v + infos->mapinf->width]) == 1)
 				ft_line_new(infos, infos->iso[v],
 			infos->iso[v + infos->mapinf->width]);
 			v++;

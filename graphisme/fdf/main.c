@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 18:19:25 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/19 18:13:50 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/04/23 14:38:53 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ static t_window	*ft_create_infos(t_window *infos, int *fd, char **av)
 
 static t_window	*ft_fill_infos_point(t_window *infos, char **col)
 {
-	if (!(infos->vertices = malloc(sizeof(t_point) *
-		(infos->mapinf->width * (infos->mapinf->height)) + 1)))
+	if (!(infos->vertices = malloc(sizeof(t_point)
+		* (infos->mapinf->width * (infos->mapinf->height)) + 1)))
 		return (0);
-	if (!(infos->iso = malloc(sizeof(t_point) *
-		(infos->mapinf->width * (infos->mapinf->height)) + 1)))
+	if (!(infos->iso = malloc(sizeof(t_point)
+		* (infos->mapinf->width * (infos->mapinf->height)) + 1)))
 	{
 		free(infos->vertices);
 		return (0);
@@ -71,7 +71,7 @@ static t_window	*ft_fill_infos_point(t_window *infos, char **col)
 	return (infos);
 }
 
-static t_window	*ft_fill_infos(t_window *infos)
+static t_window	*ft_fill_infos(t_window *infos, char **col)
 {
 	infos->mlx_ptr = mlx_init();
 	infos->height = 1000;
@@ -80,6 +80,7 @@ static t_window	*ft_fill_infos(t_window *infos)
 	infos->img = NULL;
 	infos->img_ptr = mlx_new_image(infos->mlx_ptr, 1500, 1000);
 	infos->img = ft_get_img(infos->img, infos->img_ptr, infos);
+	infos = ft_fill_infos_point(infos, col);
 	return (infos);
 }
 
@@ -104,10 +105,10 @@ int				main(int ac, char **av)
 			ft_putendl("Invalid file.");
 			exit(0);
 		}
-		infos = ft_fill_infos(infos);
-		infos = ft_fill_infos_point(infos, col);
+		infos = ft_fill_infos(infos, col);
 		ft_free_dchar(col);
 		mlx_hook(infos->win_ptr, 2, 1L << 0, ft_dealkey, infos);
 		mlx_loop(infos->mlx_ptr);
 	}
+	return (0);
 }
