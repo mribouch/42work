@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:52:33 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/25 18:01:59 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/05/01 17:58:34 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,23 @@
 
 
 #include <stdio.h>
+
+t_window	*ft_fill_imgcolor(t_window *infos, int i, double x, double y)
+{
+	t_hsv	hsv;
+
+	hsv.h = i * 360 / infos->value.degre % 360;
+	hsv.s = 1.0;
+	hsv.v = 1.0;
+	if (i == infos->value.max_iter && (x + y * infos->width >= 0
+		&& x + y * infos->width < infos->height * infos->width))
+		infos->img[(int)x + (int)y * infos->width] = 0x000000;
+	else
+	{
+		infos->img[(int)x + (int)y * infos->width] = ft_hsv2rgb(hsv);
+	}
+	return (infos);
+}
 
 int		ft_color(t_window *infos, int i, int color1)
 {

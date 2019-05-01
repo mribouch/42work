@@ -6,16 +6,19 @@
 #    By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/12 15:47:08 by mribouch          #+#    #+#              #
-#    Updated: 2019/04/25 18:16:43 by mribouch         ###   ########.fr        #
+#    Updated: 2019/05/01 17:58:37 by mribouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
 SRCS = main.c			\
+		mandelbrot.c	\
+		julia.c			\
 		key.c			\
 		color.c			\
-		mandelbrot.c
+		tools.c			\
+		status.c
 
 FLAGS = -Wall -Wextra -Werror
 OBJS = $(SRCS:.c=.o)

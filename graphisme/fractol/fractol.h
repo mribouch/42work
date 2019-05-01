@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:31:13 by mribouch          #+#    #+#             */
-/*   Updated: 2019/04/25 18:01:58 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/05/01 17:58:32 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,21 @@ typedef struct	s_value
 	double		zmx2;
 	double		zmy1;
 	double		zmy2;
+	double		zoom;
+	double		mvx;
+	double		mvy;
 	double		z;
 	double		dx;
 	double		dy;
+	double		lx;
+	double		ly;
 	int			max_iter;
+	int			mult;
+	int			degre;
+	int			c;
 }				t_value;
 
-typedef struct	s_mandel
+typedef struct	s_fract
 {
 	// double		minx;
 	// double		maxx;
@@ -38,7 +46,7 @@ typedef struct	s_mandel
 	double		ci;
 	double		zr;
 	double		zi;
-}				t_mandel;
+}				t_fract;
 
 typedef struct	s_window
 {
@@ -48,8 +56,9 @@ typedef struct	s_window
 	int			width;
 	int			height;
 	int			*img;
+	int			fid;
 	t_value		value;
-	t_mandel	point;
+	t_fract		point;
 }				t_window;
 
 typedef struct	s_color
@@ -72,10 +81,15 @@ typedef struct	s_part
 	double		r;
 }				t_part;
 
+int			ft_lfract(t_window *infos);
+int			ft_mandel(t_window *infos);
+int			ft_julia(t_window *infos);
 int			ft_dealkey(int key, t_window *infos);
 int			ft_dealmouse(int button, int x, int y, t_window *infos);
-int			ft_mandel(t_window *infos);
+t_window	*ft_zoom_mandel(t_window *infos, int x, int y);
+t_window	*ft_dezoom_mandel(t_window *infos, int x, int y);
 int			ft_color(t_window *infos, int i, int color1);
+t_window	*ft_fill_imgcolor(t_window *infos, int i, double x, double y);
 int			ft_hsv2rgb(t_hsv hsv);
 
 #endif
