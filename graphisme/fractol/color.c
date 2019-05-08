@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:52:33 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/01 17:58:34 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/05/08 14:36:33 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_window	*ft_fill_imgcolor(t_window *infos, int i, double x, double y)
 	t_hsv	hsv;
 
 	hsv.h = i * 360 / infos->value.degre % 360;
+	//ft_putendl("apres hsv");
 	hsv.s = 1.0;
 	hsv.v = 1.0;
 	if (i == infos->value.max_iter && (x + y * infos->width >= 0

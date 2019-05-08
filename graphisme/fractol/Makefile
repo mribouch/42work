@@ -6,7 +6,7 @@
 #    By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/12 15:47:08 by mribouch          #+#    #+#              #
-#    Updated: 2019/05/01 17:58:37 by mribouch         ###   ########.fr        #
+#    Updated: 2019/05/08 13:43:20 by mribouch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = fractol
 SRCS = main.c			\
 		mandelbrot.c	\
 		julia.c			\
+		bship.c			\
 		key.c			\
 		color.c			\
 		tools.c			\

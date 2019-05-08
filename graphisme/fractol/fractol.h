@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:31:13 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/01 17:58:32 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/05/08 14:24:53 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct	s_value
 	double		zmx2;
 	double		zmy1;
 	double		zmy2;
+	double		x1;
+	double		y1;
 	double		zoom;
 	double		mvx;
 	double		mvy;
@@ -31,6 +33,7 @@ typedef struct	s_value
 	double		lx;
 	double		ly;
 	int			max_iter;
+	int			lock;
 	int			mult;
 	int			degre;
 	int			c;
@@ -48,6 +51,12 @@ typedef struct	s_fract
 	double		zi;
 }				t_fract;
 
+typedef struct	s_cursor
+{
+	double		x;
+	double		y;
+}				t_cursor;
+
 typedef struct	s_window
 {
 	void		*mlx_ptr;
@@ -57,6 +66,7 @@ typedef struct	s_window
 	int			height;
 	int			*img;
 	int			fid;
+	t_cursor	cursor;
 	t_value		value;
 	t_fract		point;
 }				t_window;
@@ -81,13 +91,22 @@ typedef struct	s_part
 	double		r;
 }				t_part;
 
+
 int			ft_lfract(t_window *infos);
 int			ft_mandel(t_window *infos);
 int			ft_julia(t_window *infos);
+int			ft_bship(t_window *infos);
 int			ft_dealkey(int key, t_window *infos);
 int			ft_dealmouse(int button, int x, int y, t_window *infos);
+int			ft_get_cursor(int x, int y, t_window *infos);
+t_window	*ft_init(t_window *infos);
+t_window	*ft_init_bship(t_window *infos);
+t_window	*ft_init_julia(t_window *infos);
+t_window	*ft_init_mandel(t_window *infos);
 t_window	*ft_zoom_mandel(t_window *infos, int x, int y);
 t_window	*ft_dezoom_mandel(t_window *infos, int x, int y);
+t_window	*ft_zoom_bship(t_window *infos, double x, double y);
+t_window	*ft_dezoom_bship(t_window *infos, double x, double y);
 int			ft_color(t_window *infos, int i, int color1);
 t_window	*ft_fill_imgcolor(t_window *infos, int i, double x, double y);
 int			ft_hsv2rgb(t_hsv hsv);
