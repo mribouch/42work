@@ -6,13 +6,22 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:28:45 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/08 13:24:11 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/05/13 16:01:13 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-#include <stdio.h>
+int	ft_lfract(t_window *infos)
+{
+	if (infos->fid == 1)
+		ft_mandel(infos);
+	else if (infos->fid == 2)
+		ft_julia(infos);
+	else if (infos->fid == 3)
+		ft_bship(infos);
+	return (0);
+}
 
 int			*ft_get_img(int *img, void *img_ptr, t_window *infos)
 {
@@ -34,26 +43,13 @@ static t_window	*ft_fill_infos(t_window *infos)
 	infos->img = NULL;
 	infos->img_ptr = mlx_new_image(infos->mlx_ptr, 600, 600);
 	infos->img = ft_get_img(infos->img, infos->img_ptr, infos);
-	// infos->value.max_iter = 75;
-	// infos->value.zmx1 = infos->width / 4;
-	// infos->value.zmx2 = 2;
-	// infos->value.zmy1 = infos->height / 4;
-	// infos->value.zmy2 = 2;
-	// infos->value.zoom = 1;
-	// infos->value.mult = 1;
-	// infos->value.z = 2;
-	// infos->value.degre = 100;
-	// infos->value.c = 1;
-	// infos->value.lx = 0;
-	// infos->value.ly = 0;
-	// infos->value.mvx = 0;
-	// infos->value.mvy = 0;
-	// infos->value.dx = 0;
-	// infos->value.dy = 0;
-	// infos->cursor.x = 0.285;
-	// infos->cursor.y = 0.013;
-	// infos->value.lock = 1;
-	ft_putendl("la ");
+	infos->value.cid = 1;
+	infos->btnp = 0;
+	infos->value.colorh.h = 360;
+	infos->value.colorh.s = 1.0;
+	infos->value.colorh.v = 1.0;
+	infos->value.lastx = 480;
+	infos->value.lasty = 25;
 	return (infos);
 }
 
@@ -79,16 +75,11 @@ int	main(int ac, char **av)
 			infos->fid = 3;
 		infos = ft_init(infos);
 		ft_lfract(infos);
-		//mlx_key_hook(infos->win_ptr, ft_dealkey, infos);
 		mlx_hook(infos->win_ptr, 2, (1L << 0), ft_dealkey, infos);
 		mlx_hook(infos->win_ptr, 6, (1L << 6), ft_get_cursor, infos);
-		mlx_mouse_hook(infos->win_ptr, ft_dealmouse, infos);
-		//mlx_loop_hook(infos->mlx_ptr, ft_lfract, infos);
+		mlx_hook(infos->win_ptr, 4, (1L << 2), ft_dealmouse, infos);
+		mlx_hook(infos->win_ptr, 5, (1L << 3), ft_check_button, infos);
 		mlx_loop(infos->mlx_ptr);
-		//ft_putendl("what");
 	}
 	return (0);
 }
-
-//http://sdz.tdct.org/sdz/dessiner-la-fractale-de-mandelbrot.html
-// https://stackoverflow.com/questions/4405381/how-to-zoom-mandelbrot-set

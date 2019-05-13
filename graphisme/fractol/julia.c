@@ -6,15 +6,28 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 17:32:24 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/06 15:59:32 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/05/13 15:49:44 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-#include <stdio.h>
-
-//https://lodev.org/cgtutor/juliamandelbrot.html
+t_fract	ft_c_if_lock(t_fract j, t_window *infos)
+{
+	if (infos->value.lock == 0)
+	{
+		j.cr = infos->cursor.x / (infos->width / 2) - 1;
+		j.ci = infos->cursor.y / (infos->height / 2) - 1;
+		infos->value.lastcr = infos->cursor.x;
+		infos->value.lastci = infos->cursor.y;
+	}
+	else
+	{
+		j.cr = infos->value.lastcr / (infos->width / 2) - 1;
+		j.ci = infos->value.lastci / (infos->height / 2) - 1;
+	}
+	return (j);
+}
 
 t_fract	ft_filljulia(t_fract j, double x, double y, t_window *infos)
 {
@@ -52,10 +65,8 @@ int	ft_julia(t_window *infos)
 
 	x = 0;
 	y = 0;
-	j.cr = infos->cursor.x / (infos->width / 2) - 1;
-	j.ci = infos->cursor.y / (infos->height / 2) - 1;
-	printf("j.cr = %f\n", j.cr);
-	printf("j.ci = %f\n", j.ci);
+	j.cr = 0;
+	j = ft_c_if_lock(j, infos);
 	while (x < infos->width)
 	{
 		while (y < infos->height)
@@ -67,6 +78,8 @@ int	ft_julia(t_window *infos)
 		y = 0;
 		x++;
 	}
+	if (infos->value.cid == 2 || infos->value.cid == 3)
+		infos = ft_put_slide_hsv(infos, 480, 25);
 	mlx_put_image_to_window(infos->mlx_ptr, infos->win_ptr, infos->img_ptr, 0, 0);
 	return (0);
 }

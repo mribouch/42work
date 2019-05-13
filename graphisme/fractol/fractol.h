@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:31:13 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/08 14:24:53 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/05/13 15:56:52 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 # include "libft/libft.h"
 # include "minilibx_macos/mlx.h"
 
+typedef struct	s_hsv
+{
+	double			h;
+	double			s;
+	double			v;
+}				t_hsv;
 
 typedef struct	s_value
 {
@@ -36,7 +42,12 @@ typedef struct	s_value
 	int			lock;
 	int			mult;
 	int			degre;
-	int			c;
+	int			cid;
+	int			lastx;
+	int			lasty;
+	double		lastcr;
+	double		lastci;
+	t_hsv		colorh;
 }				t_value;
 
 typedef struct	s_fract
@@ -57,6 +68,7 @@ typedef struct	s_cursor
 	double		y;
 }				t_cursor;
 
+
 typedef struct	s_window
 {
 	void		*mlx_ptr;
@@ -66,6 +78,7 @@ typedef struct	s_window
 	int			height;
 	int			*img;
 	int			fid;
+	int			btnp;
 	t_cursor	cursor;
 	t_value		value;
 	t_fract		point;
@@ -78,12 +91,15 @@ typedef struct	s_color
 	int			b;
 }				t_color;
 
-typedef struct	s_hsv
+typedef struct	s_mapjs
 {
-	double			h;
-	double			s;
-	double			v;
-}				t_hsv;
+	double		value;
+	double		minv;
+	double		maxv;
+	double		mint;
+	double		maxt;
+}				t_mapjs;
+
 
 typedef struct	s_part
 {
@@ -99,6 +115,7 @@ int			ft_bship(t_window *infos);
 int			ft_dealkey(int key, t_window *infos);
 int			ft_dealmouse(int button, int x, int y, t_window *infos);
 int			ft_get_cursor(int x, int y, t_window *infos);
+int			ft_check_button(int button, int x, int y, t_window *infos);
 t_window	*ft_init(t_window *infos);
 t_window	*ft_init_bship(t_window *infos);
 t_window	*ft_init_julia(t_window *infos);
@@ -107,7 +124,13 @@ t_window	*ft_zoom_mandel(t_window *infos, int x, int y);
 t_window	*ft_dezoom_mandel(t_window *infos, int x, int y);
 t_window	*ft_zoom_bship(t_window *infos, double x, double y);
 t_window	*ft_dezoom_bship(t_window *infos, double x, double y);
-int			ft_color(t_window *infos, int i, int color1);
+t_window	*ft_color(t_window *infos);
+double		ft_map(t_mapjs map);
+double		ft_map2(t_mapjs map);
+void		ft_fullcircle(t_window *infos, int xc, int yc, int r, int color);
+void		ft_circle(t_window *infos, int xc, int yc, int r, int color);
+t_window	*ft_putmenu(t_window *infos);
+t_window	*ft_put_slide_hsv(t_window *infos, int x, int y);
 t_window	*ft_fill_imgcolor(t_window *infos, int i, double x, double y);
 int			ft_hsv2rgb(t_hsv hsv);
 

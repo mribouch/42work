@@ -6,16 +6,12 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 17:12:26 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/06 16:11:01 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/05/13 16:02:15 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <math.h>
-
-#include <stdio.h>
-
-
 
 t_fract	ft_fillmandel(t_fract m, double x, double y, t_window *infos)
 {
@@ -67,6 +63,11 @@ int	ft_mandel(t_window *infos)
 		y = 0;
 		x++;
 	}
+	if (infos->value.cid == 2 || infos->value.cid == 3)
+		infos = ft_put_slide_hsv(infos, 480, 25);
+	//infos = ft_putmenu(infos);
 	mlx_put_image_to_window(infos->mlx_ptr, infos->win_ptr, infos->img_ptr, 0, 0);
 	return (0);
 }
+
+//https://www.math.univ-toulouse.fr/~cheritat/wiki-draw/index.php/Mandelbrot_set
