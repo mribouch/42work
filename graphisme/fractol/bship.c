@@ -6,14 +6,14 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:42:30 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/13 15:50:09 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/05/20 14:37:48 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <math.h>
 
-t_fract	ft_fillbship(t_fract b, double x, double y, t_window *infos)
+static t_fract	ft_fillbship(t_fract b, double x, double y, t_window *infos)
 {
 	(void)infos;
 	b.cr = (x + infos->value.dx) / infos->value.zmx1
@@ -25,13 +25,12 @@ t_fract	ft_fillbship(t_fract b, double x, double y, t_window *infos)
 	return (b);
 }
 
-static int	ft_iterbship(t_fract b, double x, double y, t_window *infos)
+static int		ft_iterbship(t_fract b, double x, double y, t_window *infos)
 {
 	double	zr2;
 	double	zi2;
 	double	tmp;
 	int		i;
-
 
 	b = ft_fillbship(b, x, y, infos);
 	i = 0;
@@ -47,7 +46,7 @@ static int	ft_iterbship(t_fract b, double x, double y, t_window *infos)
 	return (i);
 }
 
-int	ft_bship(t_window *infos)
+int				ft_bship(t_window *infos)
 {
 	t_fract		b;
 	double		x;
@@ -70,6 +69,7 @@ int	ft_bship(t_window *infos)
 	}
 	if (infos->value.cid == 2 || infos->value.cid == 3)
 		infos = ft_put_slide_hsv(infos, 480, 25);
-	mlx_put_image_to_window(infos->mlx_ptr, infos->win_ptr, infos->img_ptr, 0, 0);
+	mlx_put_image_to_window(infos->mlx_ptr
+		, infos->win_ptr, infos->img_ptr, 0, 0);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:28:45 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/13 16:01:13 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/05/22 12:54:56 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	ft_lfract(t_window *infos)
+int				ft_lfract(t_window *infos)
 {
 	if (infos->fid == 1)
 		ft_mandel(infos);
@@ -23,7 +23,7 @@ int	ft_lfract(t_window *infos)
 	return (0);
 }
 
-int			*ft_get_img(int *img, void *img_ptr, t_window *infos)
+int				*ft_get_img(int *img, void *img_ptr, t_window *infos)
 {
 	int bpp;
 	int s_l;
@@ -50,16 +50,30 @@ static t_window	*ft_fill_infos(t_window *infos)
 	infos->value.colorh.v = 1.0;
 	infos->value.lastx = 480;
 	infos->value.lasty = 25;
+	infos->value.h = 1;
 	return (infos);
 }
 
-int	main(int ac, char **av)
+static int		ft_choose_fract(int fid, char *str)
+{
+	if (ft_strcmp(str, "1") == 0)
+		fid = 1;
+	else if (ft_strcmp(str, "2") == 0)
+		fid = 2;
+	else if (ft_strcmp(str, "3") == 0)
+		fid = 3;
+	return (fid);
+}
+
+int				main(int ac, char **av)
 {
 	t_window	*infos;
-	if (ac != 2 || (ft_strcmp(av[1], "1") && ft_strcmp(av[1], "2") && ft_strcmp(av[1], "3")))
+
+	if (ac != 2 || (ft_strcmp(av[1], "1") && ft_strcmp(av[1], "2")
+		&& ft_strcmp(av[1], "3")))
 	{
-		ft_putendl("Usage : ./fractol Fractal");
-		ft_putendl("./fractol 1 (Mandelbrot)\n./fractol 2 (Julia)");
+		ft_putendl("Usage : ./fractol Fractal\n./fractol 1 (Mandelbrot)");
+		ft_putendl("./fractol 2 (Julia)\n./fractol 3 (BurningShip)");
 	}
 	else
 	{
@@ -67,14 +81,10 @@ int	main(int ac, char **av)
 			return (0);
 		ft_putendl(av[1]);
 		infos = ft_fill_infos(infos);
-		if (ft_strcmp(av[1], "1") == 0)
-			infos->fid = 1;
-		else if (ft_strcmp(av[1], "2") == 0)
-			infos->fid = 2;
-		else if (ft_strcmp(av[1], "3") == 0)
-			infos->fid = 3;
+		infos->fid = ft_choose_fract(infos->fid, av[1]);
 		infos = ft_init(infos);
 		ft_lfract(infos);
+		ft_putmenu(infos);
 		mlx_hook(infos->win_ptr, 2, (1L << 0), ft_dealkey, infos);
 		mlx_hook(infos->win_ptr, 6, (1L << 6), ft_get_cursor, infos);
 		mlx_hook(infos->win_ptr, 4, (1L << 2), ft_dealmouse, infos);

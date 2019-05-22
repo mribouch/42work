@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:31:13 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/13 15:56:52 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/05/22 13:09:40 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,11 @@ typedef struct	s_value
 	double		lastcr;
 	double		lastci;
 	t_hsv		colorh;
+	int			h;
 }				t_value;
 
 typedef struct	s_fract
 {
-	// double		minx;
-	// double		maxx;
-	// double		miny;
-	// double		maxy;
 	double		cr;
 	double		ci;
 	double		zr;
@@ -68,6 +65,20 @@ typedef struct	s_cursor
 	double		y;
 }				t_cursor;
 
+typedef struct	s_circle
+{
+	int x;
+	int y;
+	int d;
+	int	r;
+}				t_circle;
+
+typedef struct	s_point
+{
+	int	x;
+	int	y;
+	int	color;
+}				t_point;
 
 typedef struct	s_window
 {
@@ -100,38 +111,39 @@ typedef struct	s_mapjs
 	double		maxt;
 }				t_mapjs;
 
-
 typedef struct	s_part
 {
 	double		i;
 	double		r;
 }				t_part;
 
-
-int			ft_lfract(t_window *infos);
-int			ft_mandel(t_window *infos);
-int			ft_julia(t_window *infos);
-int			ft_bship(t_window *infos);
-int			ft_dealkey(int key, t_window *infos);
-int			ft_dealmouse(int button, int x, int y, t_window *infos);
-int			ft_get_cursor(int x, int y, t_window *infos);
-int			ft_check_button(int button, int x, int y, t_window *infos);
-t_window	*ft_init(t_window *infos);
-t_window	*ft_init_bship(t_window *infos);
-t_window	*ft_init_julia(t_window *infos);
-t_window	*ft_init_mandel(t_window *infos);
-t_window	*ft_zoom_mandel(t_window *infos, int x, int y);
-t_window	*ft_dezoom_mandel(t_window *infos, int x, int y);
-t_window	*ft_zoom_bship(t_window *infos, double x, double y);
-t_window	*ft_dezoom_bship(t_window *infos, double x, double y);
-t_window	*ft_color(t_window *infos);
-double		ft_map(t_mapjs map);
-double		ft_map2(t_mapjs map);
-void		ft_fullcircle(t_window *infos, int xc, int yc, int r, int color);
-void		ft_circle(t_window *infos, int xc, int yc, int r, int color);
-t_window	*ft_putmenu(t_window *infos);
-t_window	*ft_put_slide_hsv(t_window *infos, int x, int y);
-t_window	*ft_fill_imgcolor(t_window *infos, int i, double x, double y);
-int			ft_hsv2rgb(t_hsv hsv);
+int				ft_lfract(t_window *infos);
+int				ft_mandel(t_window *infos);
+int				ft_julia(t_window *infos);
+int				ft_bship(t_window *infos);
+int				ft_dealkey(int key, t_window *infos);
+int				ft_dealmouse(int button, int x, int y, t_window *infos);
+int				ft_get_cursor(int x, int y, t_window *infos);
+int				ft_check_button(int button, int x, int y, t_window *infos);
+void			ft_change_stat(t_window *infos, int key);
+void			ft_move_julia(t_window *infos, int key);
+void			ft_change_id(t_window *infos, int key);
+t_window		*ft_init(t_window *infos);
+t_window		*ft_init_bship(t_window *infos);
+t_window		*ft_init_julia(t_window *infos);
+t_window		*ft_init_mandel(t_window *infos);
+t_window		*ft_zoom_mandel(t_window *infos, int x, int y);
+t_window		*ft_dezoom_mandel(t_window *infos, int x, int y);
+t_window		*ft_color(t_window *infos);
+double			ft_map(t_mapjs map);
+double			ft_map2(t_mapjs map);
+void			ft_fullcircle(t_window *infos, t_point c
+					, int r, int color);
+void			ft_circle(t_window *infos, t_point c, int r, int color);
+t_window		*ft_putmenu(t_window *infos);
+t_window		*ft_put_slide_hsv(t_window *infos, int x, int y);
+t_window		*ft_fill_imgcolor(t_window *infos, int i, double x, double y);
+int				ft_create_rgb(double r, double g, double b);
+int				ft_hsv2rgb(t_hsv hsv);
 
 #endif
