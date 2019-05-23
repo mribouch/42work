@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:28:45 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/22 12:54:56 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/05/23 13:58:30 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static t_window	*ft_fill_infos(t_window *infos)
 	infos->mlx_ptr = mlx_init();
 	infos->height = 600;
 	infos->width = 600;
-	infos->win_ptr = mlx_new_window(infos->mlx_ptr, 600, 600, "testwin");
+	infos->win_ptr = mlx_new_window(infos->mlx_ptr, 600, 600, "fractol");
 	infos->img = NULL;
 	infos->img_ptr = mlx_new_image(infos->mlx_ptr, 600, 600);
 	infos->img = ft_get_img(infos->img, infos->img_ptr, infos);

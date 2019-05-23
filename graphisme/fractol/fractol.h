@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:31:13 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/22 13:09:40 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/05/23 13:58:56 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ typedef struct	s_value
 	double		z;
 	double		dx;
 	double		dy;
-	double		lx;
-	double		ly;
 	int			max_iter;
 	int			lock;
 	int			mult;

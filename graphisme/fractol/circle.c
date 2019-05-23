@@ -6,13 +6,13 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 14:49:50 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/22 12:22:20 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/05/23 14:00:38 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void		ft_fill_circle(t_window *infos, t_point c, int x, int y)
+static void	ft_fill_circle(t_window *infos, t_point c, int x, int y)
 {
 	infos->img[(c.x + x) + (c.y + y) * infos->width] = c.color;
 	infos->img[(c.x + y) + (c.y + x) * infos->width] = c.color;

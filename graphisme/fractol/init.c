@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 18:04:40 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/22 13:00:55 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/05/23 13:35:25 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_window	*ft_init_mandel(t_window *infos)
 	infos->value.zmx2 = 2;
 	infos->value.zmy1 = infos->height / 4;
 	infos->value.zmy2 = 2;
-	infos->value.zoom = 1;
 	infos->value.mult = 1;
 	infos->value.z = 2;
 	infos->value.degre = 100;

@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 14:53:45 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/20 17:15:05 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/05/23 13:46:41 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ t_window	*ft_zoom_mandel(t_window *infos, int x, int y)
 	infos->value.dx *= infos->value.z;
 	infos->value.dy *= infos->value.z;
 	infos->value.max_iter++;
-	infos->value.lx = x;
-	infos->value.ly = y;
 	return (infos);
 }
 
@@ -38,8 +36,6 @@ t_window	*ft_dezoom_mandel(t_window *infos, int x, int y)
 	infos->value.zmy2 /= (1 / infos->value.z);
 	infos->value.dx /= infos->value.z;
 	infos->value.dy /= infos->value.z;
-	infos->value.lx = x;
-	infos->value.ly = y;
 	infos->value.max_iter--;
 	return (infos);
 }

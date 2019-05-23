@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 19:25:12 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/22 12:13:41 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/05/23 15:04:11 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_hsv	ft_get_h(t_window *infos, int x, int y, int length)
 	return (hsv);
 }
 
-t_window		*ft_putrgbar(t_window *infos, int x, int y, int length)
+static t_window	*ft_putrgbar(t_window *infos, int x, int y, int length)
 {
 	t_mapjs	map;
 	t_hsv	hsv;
@@ -50,7 +50,7 @@ t_window		*ft_putrgbar(t_window *infos, int x, int y, int length)
 	return (infos);
 }
 
-int				ft_in_bar(t_window *infos, int x, int y, int length)
+static int		ft_in_bar(t_window *infos, int x, int y, int length)
 {
 	if ((infos->cursor.x >= x && infos->cursor.x <= x + length)
 		&& (infos->cursor.y >= y - 5 && infos->cursor.y <= y + 9))
