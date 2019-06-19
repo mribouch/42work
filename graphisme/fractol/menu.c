@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 19:25:12 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/23 15:04:11 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/18 17:34:09 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,8 @@ t_window		*ft_putmenu(t_window *infos)
 		mlx_string_put(m, w, 10, 130, c, "Move Julia  = w, a, s, d");
 		mlx_string_put(m, w, 10, 150, c, "Lock Julia  = 'l'");
 		mlx_string_put(m, w, 10, 540, c, "Spread of color = '-', '+'");
-		mlx_string_put(m, w, 10, 560, c, "Increase multiply iteration = Num +");
-		mlx_string_put(m, w, 10, 580, c, "Decrease multiply iteration = Num -");
+		mlx_string_put(m, w, 10, 560, c, "Multiply iteration = Num + / Num -");
+		mlx_string_put(m, w, 350, 580, c, "Switch fractal : 1, 2, 3");
 	}
 	return (infos);
 }

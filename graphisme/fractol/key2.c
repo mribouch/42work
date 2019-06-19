@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:50:03 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/20 16:13:45 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/18 16:53:19 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,20 @@ void	ft_move_julia(t_window *infos, int key)
 		infos->value.mvx = infos->value.mvx - 0.1 / infos->value.zoom;
 }
 
+void	ft_switch_fract(t_window *infos, int key)
+{
+	int fract;
+
+	fract = key - 17;
+	if (fract == 1)
+		infos->fid = 1;
+	else if (fract == 2)
+		infos->fid = 2;
+	else if (fract == 3)
+		infos->fid = 3;
+	infos = ft_init(infos);
+}
+
 void	ft_change_id(t_window *infos, int key)
 {
 	if (key == 8)
@@ -57,5 +71,9 @@ void	ft_change_id(t_window *infos, int key)
 			infos->value.lock++;
 		else if (infos->value.lock == 1)
 			infos->value.lock = 0;
+	}
+	if (key == 18 || key == 19 || key == 20)
+	{
+		ft_switch_fract(infos, key);
 	}
 }

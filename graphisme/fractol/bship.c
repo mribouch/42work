@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:42:30 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/20 14:37:48 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/18 17:02:44 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static t_fract	ft_fillbship(t_fract b, double x, double y, t_window *infos)
 	(void)infos;
 	b.cr = (x + infos->value.dx) / infos->value.zmx1
 		- infos->value.zmx2 - 0.5;
-	b.ci = infos->value.zmy2 - (y + infos->value.dy)
-		/ infos->value.zmy1 - 0.5;
+	b.ci = -1 * (infos->value.zmy2 - (y + infos->value.dy)
+		/ infos->value.zmy1);
 	b.zr = 0;
 	b.zi = 0;
 	return (b);
