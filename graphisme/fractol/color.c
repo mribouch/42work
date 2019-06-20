@@ -6,12 +6,14 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:52:33 by mribouch          #+#    #+#             */
-/*   Updated: 2019/06/19 15:28:52 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/20 15:08:35 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <math.h>
+
+#include <stdio.h>
 
 static t_hsv	ft_hsv_for_cid(t_window *infos, int i, t_mapjs map)
 {
@@ -34,27 +36,30 @@ static t_hsv	ft_hsv_for_cid(t_window *infos, int i, t_mapjs map)
 	}
 	else if (infos->value.cid == 4)
 	{
-		hsv.h = 12 * i;
-		if (hsv.h > 359)
+		hsv.h = 12;
+		hsv.h = hsv.h + 12 * i;
+		while (hsv.h > 359)
 			hsv.h -= 360;
 	}
 	return (hsv);
 }
 
-int				ft_test_color(int color)
+int				ft_test_color(t_window *infos, int color)
 {
-	int		perr;
-	int		perg;
-	int		perb;
+	float		perr;
+	float		perg;
+	float		perb;
 	t_color	rgb;
 
 	rgb.r = (color & 0xFF0000) >> 16;
 	rgb.g = (color & 0x00FF00) >> 8;
 	rgb.b = (color & 0x0000FF);
-	perr = rgb.r / 255;
-	perg = rgb.g / 255;
-	perb = rgb.b / 255;
-	return (0xFF0000 * perr + 0x00FF00 * perg + 0x0000FF * perb);
+	perr = (float)rgb.r / 255;
+	perg = (float)rgb.g / 255;
+	perb = (float)rgb.b / 255;
+	return (ft_hsv2rgb(infos->value.pal.col1) * perr
+		+ ft_hsv2rgb(infos->value.pal.col2) * perg
+			+ ft_hsv2rgb(infos->value.pal.col3) * perb);
 }
 
 t_window		*ft_fill_imgcolor(t_window *infos, int i, double x, double y)
@@ -72,7 +77,7 @@ t_window		*ft_fill_imgcolor(t_window *infos, int i, double x, double y)
 			&& x + y * infos->width < infos->height * infos->width))
 		infos->img[(int)x + (int)y * infos->width] = 0x000000;
 	else if (infos->value.cid == 4)
-		infos->img[(int)x + (int)y * infos->width] = ft_test_color(ft_hsv2rgb(hsv));
+		infos->img[(int)x + (int)y * infos->width] = ft_test_color(infos, ft_hsv2rgb(hsv));
 	else
 		infos->img[(int)x + (int)y * infos->width] = ft_hsv2rgb(hsv);
 	return (infos);

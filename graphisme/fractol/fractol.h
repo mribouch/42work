@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:31:13 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/23 13:58:56 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/20 14:23:52 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ typedef struct	s_hsv
 	double			s;
 	double			v;
 }				t_hsv;
+
+typedef struct	s_slider
+{
+	t_hsv	col1;
+	t_hsv	col2;
+	t_hsv	col3;
+}				t_slider;
+
 
 typedef struct	s_value
 {
@@ -46,6 +54,7 @@ typedef struct	s_value
 	double		lastcr;
 	double		lastci;
 	t_hsv		colorh;
+	t_slider	pal;
 	int			h;
 }				t_value;
 
@@ -139,7 +148,7 @@ void			ft_fullcircle(t_window *infos, t_point c
 					, int r, int color);
 void			ft_circle(t_window *infos, t_point c, int r, int color);
 t_window		*ft_putmenu(t_window *infos);
-t_window		*ft_put_slide_hsv(t_window *infos, int x, int y);
+t_hsv		ft_put_slide_hsv(t_window *infos, int x, int y, t_hsv retcol);
 t_window		*ft_fill_imgcolor(t_window *infos, int i, double x, double y);
 int				ft_create_rgb(double r, double g, double b);
 int				ft_hsv2rgb(t_hsv hsv);

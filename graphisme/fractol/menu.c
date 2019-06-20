@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 19:25:12 by mribouch          #+#    #+#             */
-/*   Updated: 2019/06/18 17:34:09 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/20 15:12:07 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int		ft_in_bar(t_window *infos, int x, int y, int length)
 	return (0);
 }
 
-t_window		*ft_put_slide_hsv(t_window *infos, int x, int y)
+t_hsv		ft_put_slide_hsv(t_window *infos, int x, int y, t_hsv retcol)
 {
 	t_point	c;
 
@@ -71,18 +71,18 @@ t_window		*ft_put_slide_hsv(t_window *infos, int x, int y)
 	infos = ft_putrgbar(infos, x, y + 4, 100);
 	if (infos->btnp == 1 && ft_in_bar(infos, x, y, 100) == 1)
 	{
-		infos->value.colorh = ft_get_h(infos, x, y, 100);
+		retcol = ft_get_h(infos, x, y, 100);
 		ft_circle(infos, c, 7, 0x000000);
-		ft_fullcircle(infos, c, 6, ft_hsv2rgb(infos->value.colorh));
+		ft_fullcircle(infos, c, 6, ft_hsv2rgb(retcol));
 		infos->value.lastx = infos->cursor.x;
 	}
 	else
 	{
 		c.x = infos->value.lastx;
 		ft_circle(infos, c, 7, 0x000000);
-		ft_fullcircle(infos, c, 6, ft_hsv2rgb(infos->value.colorh));
+		ft_fullcircle(infos, c, 6, ft_hsv2rgb(retcol));
 	}
-	return (infos);
+	return (retcol);
 }
 
 t_window		*ft_putmenu(t_window *infos)
