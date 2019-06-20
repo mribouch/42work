@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 17:12:26 by mribouch          #+#    #+#             */
-/*   Updated: 2019/06/20 14:26:25 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/20 18:12:35 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,8 @@ int				ft_mandel(t_window *infos)
 		y = 0;
 		x++;
 	}
-	if (infos->value.cid == 2 || infos->value.cid == 3)
-		infos->value.colorh = ft_put_slide_hsv(infos, 480, 25, infos->value.colorh);
-	infos = ft_putmenu(infos);
-	mlx_put_image_to_window(infos->mlx_ptr
-		, infos->win_ptr, infos->img_ptr, 0, 0);
+	ft_print_sld(infos);
+	mlx_put_image_to_window(infos->mlx_ptr, infos->win_ptr
+		, infos->img_ptr, 0, 0);
 	return (0);
 }

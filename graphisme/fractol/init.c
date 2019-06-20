@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 18:04:40 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/23 13:35:25 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/20 17:40:31 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,31 @@ t_window	*ft_init_bship(t_window *infos)
 	return (infos);
 }
 
+static void	ft_init_slide(t_window *infos)
+{
+	infos->stock_s.slide1.x = 480;
+	infos->stock_s.slide1.y = 25;
+	infos->stock_s.slide2.x = 480;
+	infos->stock_s.slide2.y = 25;
+	infos->stock_s.slide3.x = 480;
+	infos->stock_s.slide3.y = 50;
+	infos->stock_s.slide4.x = 480;
+	infos->stock_s.slide4.y = 75;
+	infos->stock_s.slide1.col_s.h = 360;
+	infos->stock_s.slide1.col_s.s = 1.0;
+	infos->stock_s.slide1.col_s.v = 1.0;
+	infos->stock_s.slide2.col_s.h = 360;
+	infos->stock_s.slide2.col_s.s = 1.0;
+	infos->stock_s.slide2.col_s.v = 1.0;
+	infos->stock_s.slide3.col_s.h = 360;
+	infos->stock_s.slide3.col_s.s = 1.0;
+	infos->stock_s.slide3.col_s.v = 1.0;
+	infos->stock_s.slide4.col_s.h = 360;
+	infos->stock_s.slide4.col_s.s = 1.0;
+	infos->stock_s.slide4.col_s.v = 1.0;
+	ft_init_slide2(infos);
+}
+
 t_window	*ft_init(t_window *infos)
 {
 	if (infos->fid == 1)
@@ -70,5 +95,6 @@ t_window	*ft_init(t_window *infos)
 		infos = ft_init_julia(infos);
 	if (infos->fid == 3)
 		infos = ft_init_bship(infos);
+	ft_init_slide(infos);
 	return (infos);
 }

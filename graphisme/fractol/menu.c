@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 19:25:12 by mribouch          #+#    #+#             */
-/*   Updated: 2019/06/20 15:12:07 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/20 18:48:40 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,31 +58,31 @@ static int		ft_in_bar(t_window *infos, int x, int y, int length)
 	return (0);
 }
 
-t_hsv		ft_put_slide_hsv(t_window *infos, int x, int y, t_hsv retcol)
+t_hsv			ft_put_slide_hsv(t_window *infos, t_slider *slide)
 {
 	t_point	c;
 
 	c.x = infos->cursor.x;
-	c.y = y + 2;
-	infos = ft_putrgbar(infos, x, y, 100);
-	infos = ft_putrgbar(infos, x, y + 1, 100);
-	infos = ft_putrgbar(infos, x, y + 2, 100);
-	infos = ft_putrgbar(infos, x, y + 3, 100);
-	infos = ft_putrgbar(infos, x, y + 4, 100);
-	if (infos->btnp == 1 && ft_in_bar(infos, x, y, 100) == 1)
+	c.y = slide->y + 2;
+	infos = ft_putrgbar(infos, slide->x, slide->y, 100);
+	infos = ft_putrgbar(infos, slide->x, slide->y + 1, 100);
+	infos = ft_putrgbar(infos, slide->x, slide->y + 2, 100);
+	infos = ft_putrgbar(infos, slide->x, slide->y + 3, 100);
+	infos = ft_putrgbar(infos, slide->x, slide->y + 4, 100);
+	if (infos->btnp == 1 && ft_in_bar(infos, slide->x, slide->y, 100) == 1)
 	{
-		retcol = ft_get_h(infos, x, y, 100);
+		slide->col_s = ft_get_h(infos, slide->x, slide->y, 100);
 		ft_circle(infos, c, 7, 0x000000);
-		ft_fullcircle(infos, c, 6, ft_hsv2rgb(retcol));
-		infos->value.lastx = infos->cursor.x;
+		ft_fullcircle(infos, c, 6, ft_hsv2rgb(slide->col_s));
+		slide->lastx = infos->cursor.x;
 	}
 	else
 	{
-		c.x = infos->value.lastx;
+		c.x = slide->lastx;
 		ft_circle(infos, c, 7, 0x000000);
-		ft_fullcircle(infos, c, 6, ft_hsv2rgb(retcol));
+		ft_fullcircle(infos, c, 6, ft_hsv2rgb(slide->col_s));
 	}
-	return (retcol);
+	return (slide->col_s);
 }
 
 t_window		*ft_putmenu(t_window *infos)
@@ -103,11 +103,11 @@ t_window		*ft_putmenu(t_window *infos)
 		mlx_string_put(m, w, 10, 30, c, "Reset = 'r'");
 		mlx_string_put(m, w, 10, 50, c, "Zoom = Scroll");
 		mlx_string_put(m, w, 10, 70, c, "Change color mode = 'c'");
-		mlx_string_put(m, w, 10, 90, c, "Increase iteration = Up arrow");
-		mlx_string_put(m, w, 10, 110, c, "Decrease iteration = Down arrow");
-		mlx_string_put(m, w, 10, 130, c, "Move Julia  = w, a, s, d");
-		mlx_string_put(m, w, 10, 150, c, "Lock Julia  = 'l'");
-		mlx_string_put(m, w, 10, 540, c, "Spread of color = '-', '+'");
+		mlx_string_put(m, w, 10, 90, c, "Change iteration = UP/DOWN arrow");
+		mlx_string_put(m, w, 10, 110, c, "Move Julia  = w, a, s, d");
+		mlx_string_put(m, w, 10, 130, c, "Lock Julia  = 'l'");
+		mlx_string_put(m, w, 10, 520, c, "Color's spread in mode 1 = -, +");
+		mlx_string_put(m, w, 10, 540, c, "Color's spread in mode 4 = <-/->");
 		mlx_string_put(m, w, 10, 560, c, "Multiply iteration = Num + / Num -");
 		mlx_string_put(m, w, 350, 580, c, "Switch fractal : 1, 2, 3");
 	}

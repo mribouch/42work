@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:28:45 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/23 13:58:30 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/20 18:50:15 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ static t_window	*ft_fill_infos(t_window *infos)
 	infos->value.colorh.h = 360;
 	infos->value.colorh.s = 1.0;
 	infos->value.colorh.v = 1.0;
-	infos->value.lastx = 480;
-	infos->value.lasty = 25;
+	infos->value.h_per_i = 6;
 	infos->value.h = 1;
 	return (infos);
 }

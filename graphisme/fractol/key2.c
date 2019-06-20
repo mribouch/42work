@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:50:03 by mribouch          #+#    #+#             */
-/*   Updated: 2019/06/18 16:53:19 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/20 18:56:04 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ void	ft_change_stat(t_window *infos, int key)
 		infos->value.mult--;
 	if (key == 27 && infos->value.degre > 1)
 		infos->value.degre--;
+	if (key == 124 && infos->value.h_per_i >= 1)
+		infos->value.h_per_i++;
+	if (key == 123 && infos->value.h_per_i >= 2)
+		infos->value.h_per_i--;
 }
 
 void	ft_move_julia(t_window *infos, int key)

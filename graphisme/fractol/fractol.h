@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:31:13 by mribouch          #+#    #+#             */
-/*   Updated: 2019/06/20 14:23:52 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/20 18:23:26 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,21 @@ typedef struct	s_hsv
 	double			v;
 }				t_hsv;
 
-typedef struct	s_slider
+typedef struct	s_slicol
 {
 	t_hsv	col1;
 	t_hsv	col2;
 	t_hsv	col3;
-}				t_slider;
+}				t_slicol;
 
+typedef struct	s_slider
+{
+	int			x;
+	int			y;
+	int			lastx;
+	int			lasty;
+	t_hsv		col_s;
+}				t_slider;
 
 typedef struct	s_value
 {
@@ -49,12 +57,11 @@ typedef struct	s_value
 	int			mult;
 	int			degre;
 	int			cid;
-	int			lastx;
-	int			lasty;
 	double		lastcr;
 	double		lastci;
+	int			h_per_i;
 	t_hsv		colorh;
-	t_slider	pal;
+	t_slicol	pal;
 	int			h;
 }				t_value;
 
@@ -87,6 +94,14 @@ typedef struct	s_point
 	int	color;
 }				t_point;
 
+typedef struct	s_allslide
+{
+	t_slider	slide1;
+	t_slider	slide2;
+	t_slider	slide3;
+	t_slider	slide4;
+}				t_allslide;
+
 typedef struct	s_window
 {
 	void		*mlx_ptr;
@@ -100,6 +115,7 @@ typedef struct	s_window
 	t_cursor	cursor;
 	t_value		value;
 	t_fract		point;
+	t_allslide	stock_s;
 }				t_window;
 
 typedef struct	s_color
@@ -136,6 +152,7 @@ void			ft_change_stat(t_window *infos, int key);
 void			ft_move_julia(t_window *infos, int key);
 void			ft_change_id(t_window *infos, int key);
 t_window		*ft_init(t_window *infos);
+void			ft_init_slide2(t_window *infos);
 t_window		*ft_init_bship(t_window *infos);
 t_window		*ft_init_julia(t_window *infos);
 t_window		*ft_init_mandel(t_window *infos);
@@ -148,8 +165,10 @@ void			ft_fullcircle(t_window *infos, t_point c
 					, int r, int color);
 void			ft_circle(t_window *infos, t_point c, int r, int color);
 t_window		*ft_putmenu(t_window *infos);
-t_hsv		ft_put_slide_hsv(t_window *infos, int x, int y, t_hsv retcol);
+t_hsv			ft_put_slide_hsv(t_window *infos, t_slider *slide);
+void			ft_print_sld(t_window *infos);
 t_window		*ft_fill_imgcolor(t_window *infos, int i, double x, double y);
+int				ft_get_col(t_window *infos, int color);
 int				ft_create_rgb(double r, double g, double b);
 int				ft_hsv2rgb(t_hsv hsv);
 

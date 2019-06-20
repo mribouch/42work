@@ -6,11 +6,57 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 14:08:51 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/22 12:53:55 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/20 18:16:05 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int			ft_get_col(t_window *infos, int color)
+{
+	float	perr;
+	float	perg;
+	float	perb;
+	t_color	rgb;
+
+	rgb.r = (color & 0xFF0000) >> 16;
+	rgb.g = (color & 0x00FF00) >> 8;
+	rgb.b = (color & 0x0000FF);
+	perr = (float)rgb.r / 255;
+	perg = (float)rgb.g / 255;
+	perb = (float)rgb.b / 255;
+	return (ft_hsv2rgb(infos->stock_s.slide2.col_s) * perr
+		+ ft_hsv2rgb(infos->stock_s.slide3.col_s) * perg
+			+ ft_hsv2rgb(infos->stock_s.slide4.col_s) * perb);
+}
+
+void		ft_print_sld(t_window *infos)
+{
+	if (infos->value.cid == 2 || infos->value.cid == 3)
+		infos->stock_s.slide1.col_s = ft_put_slide_hsv(infos
+			, &infos->stock_s.slide1);
+	if (infos->value.cid == 4)
+	{
+		infos->stock_s.slide2.col_s = ft_put_slide_hsv(infos
+			, &infos->stock_s.slide2);
+		infos->stock_s.slide3.col_s = ft_put_slide_hsv(infos
+			, &infos->stock_s.slide3);
+		infos->stock_s.slide4.col_s = ft_put_slide_hsv(infos
+			, &infos->stock_s.slide4);
+	}
+}
+
+void		ft_init_slide2(t_window *infos)
+{
+	infos->stock_s.slide1.lastx = 480;
+	infos->stock_s.slide1.lasty = 25;
+	infos->stock_s.slide2.lastx = 480;
+	infos->stock_s.slide2.lasty = 25;
+	infos->stock_s.slide3.lastx = 480;
+	infos->stock_s.slide3.lasty = 25;
+	infos->stock_s.slide4.lastx = 480;
+	infos->stock_s.slide4.lasty = 25;
+}
 
 double		ft_map(t_mapjs map)
 {
