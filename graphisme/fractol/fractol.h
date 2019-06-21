@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:31:13 by mribouch          #+#    #+#             */
-/*   Updated: 2019/06/20 18:23:26 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/21 15:17:10 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,27 @@ typedef struct	s_cursor
 	double		y;
 }				t_cursor;
 
+typedef struct	s_square
+{
+	int			x;
+	int			y;
+	int			size;
+	int			color;
+}				t_square;
+
 typedef struct	s_circle
 {
-	int x;
-	int y;
-	int d;
-	int	r;
+	int 		x;
+	int 		y;
+	int 		d;
+	int			r;
 }				t_circle;
 
 typedef struct	s_point
 {
-	int	x;
-	int	y;
-	int	color;
+	int			x;
+	int			y;
+	int			color;
 }				t_point;
 
 typedef struct	s_allslide
@@ -164,8 +172,14 @@ double			ft_map2(t_mapjs map);
 void			ft_fullcircle(t_window *infos, t_point c
 					, int r, int color);
 void			ft_circle(t_window *infos, t_point c, int r, int color);
+void			ft_init_square(t_square *sqw, t_square *sqb, t_slider *slide);
+void			ft_fill_square(t_window *infos, t_square s);
+void			ft_square(t_window *infos, t_square s);
+int				ft_in_square(t_window *infos, t_square *sq);
 t_window		*ft_putmenu(t_window *infos);
 t_hsv			ft_put_slide_hsv(t_window *infos, t_slider *slide);
+t_window		*ft_put_gauge(t_window *infos, t_slider *slide);
+t_window		*ft_putrgbar(t_window *infos, int x, int y, int length);
 void			ft_print_sld(t_window *infos);
 t_window		*ft_fill_imgcolor(t_window *infos, int i, double x, double y);
 int				ft_get_col(t_window *infos, int color);

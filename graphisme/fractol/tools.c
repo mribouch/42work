@@ -6,11 +6,15 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 14:08:51 by mribouch          #+#    #+#             */
-/*   Updated: 2019/06/20 18:16:05 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/21 16:09:39 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+
+
+#include <stdio.h>
 
 int			ft_get_col(t_window *infos, int color)
 {
@@ -25,6 +29,7 @@ int			ft_get_col(t_window *infos, int color)
 	perr = (float)rgb.r / 255;
 	perg = (float)rgb.g / 255;
 	perb = (float)rgb.b / 255;
+	// printf("col rgb = %X\n", ft_hsv2rgb(infos->stock_s.slide2.col_s));
 	return (ft_hsv2rgb(infos->stock_s.slide2.col_s) * perr
 		+ ft_hsv2rgb(infos->stock_s.slide3.col_s) * perg
 			+ ft_hsv2rgb(infos->stock_s.slide4.col_s) * perb);
@@ -39,6 +44,9 @@ void		ft_print_sld(t_window *infos)
 	{
 		infos->stock_s.slide2.col_s = ft_put_slide_hsv(infos
 			, &infos->stock_s.slide2);
+		// printf("col h = %f\n", infos->stock_s.slide2.col_s.h);
+		// printf("col s = %f\n", infos->stock_s.slide2.col_s.s);
+		// printf("col v = %f\n", infos->stock_s.slide2.col_s.v);
 		infos->stock_s.slide3.col_s = ft_put_slide_hsv(infos
 			, &infos->stock_s.slide3);
 		infos->stock_s.slide4.col_s = ft_put_slide_hsv(infos

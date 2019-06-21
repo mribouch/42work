@@ -6,11 +6,14 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 19:25:12 by mribouch          #+#    #+#             */
-/*   Updated: 2019/06/20 18:48:40 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/21 16:46:11 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+
+#include <stdio.h>
 
 static t_hsv	ft_get_h(t_window *infos, int x, int y, int length)
 {
@@ -29,7 +32,7 @@ static t_hsv	ft_get_h(t_window *infos, int x, int y, int length)
 	return (hsv);
 }
 
-static t_window	*ft_putrgbar(t_window *infos, int x, int y, int length)
+t_window	*ft_putrgbar(t_window *infos, int x, int y, int length)
 {
 	t_mapjs	map;
 	t_hsv	hsv;
@@ -60,15 +63,27 @@ static int		ft_in_bar(t_window *infos, int x, int y, int length)
 
 t_hsv			ft_put_slide_hsv(t_window *infos, t_slider *slide)
 {
-	t_point	c;
+	t_point		c;
+	t_square	sqw;
+	t_square	sqb;
 
 	c.x = infos->cursor.x;
 	c.y = slide->y + 2;
-	infos = ft_putrgbar(infos, slide->x, slide->y, 100);
-	infos = ft_putrgbar(infos, slide->x, slide->y + 1, 100);
-	infos = ft_putrgbar(infos, slide->x, slide->y + 2, 100);
-	infos = ft_putrgbar(infos, slide->x, slide->y + 3, 100);
-	infos = ft_putrgbar(infos, slide->x, slide->y + 4, 100);
+	if (infos->value.cid == 4)
+	{
+		ft_init_square(&sqw, &sqb, slide);
+		ft_fill_square(infos, sqw);
+		ft_fill_square(infos, sqb);
+	}
+	if (infos->btnp == 1 && ft_in_square(infos, &sqb) == 1)
+		slide->col_s.v = 0;
+	if (infos->btnp == 1 && ft_in_square(infos, &sqw) == 1)
+	{
+		slide->col_s.h = 0;
+		slide->col_s.s = 0;
+		slide->col_s.v = 1;
+	}
+	infos = ft_put_gauge(infos, slide);
 	if (infos->btnp == 1 && ft_in_bar(infos, slide->x, slide->y, 100) == 1)
 	{
 		slide->col_s = ft_get_h(infos, slide->x, slide->y, 100);
