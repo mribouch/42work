@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:28:45 by mribouch          #+#    #+#             */
-/*   Updated: 2019/06/20 18:50:15 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/24 15:31:14 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int				main(int ac, char **av)
 	{
 		if (!(infos = malloc(sizeof(t_window))))
 			return (0);
-		ft_putendl(av[1]);
 		infos = ft_fill_infos(infos);
 		infos->fid = ft_choose_fract(infos->fid, av[1]);
 		infos = ft_init(infos);

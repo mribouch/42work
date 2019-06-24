@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 16:52:42 by mribouch          #+#    #+#             */
-/*   Updated: 2019/05/22 12:52:59 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/24 15:30:02 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ int			ft_dealmouse(int button, int x, int y, t_window *infos)
 
 int			ft_dealkey(int key, t_window *infos)
 {
-	ft_putnbr(key);
-	ft_putchar('\n');
 	if (key == 53)
 	{
 		mlx_destroy_image(infos->mlx_ptr, infos->img_ptr);
