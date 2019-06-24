@@ -6,17 +6,35 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 13:09:09 by mribouch          #+#    #+#             */
-/*   Updated: 2019/06/21 15:19:57 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/24 15:01:42 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+void		ft_check_square(t_window *infos, t_slider *slide, t_square *sqw
+	, t_square *sqb)
+{
+	if (infos->value.cid == 4)
+	{
+		ft_init_square(sqw, sqb, slide);
+		ft_fill_square(infos, *sqw);
+		ft_fill_square(infos, *sqb);
+	}
+	if (infos->btnp == 1 && ft_in_square(infos, sqb) == 1)
+		slide->col_s.v = 0;
+	if (infos->btnp == 1 && ft_in_square(infos, sqw) == 1)
+	{
+		slide->col_s.s = 0;
+		slide->col_s.v = 1;
+	}
+}
+
 int			ft_in_square(t_window *infos, t_square *sq)
 {
 	if ((infos->cursor.x >= sq->x && infos->cursor.x <= sq->x + sq->size)
 		&& (infos->cursor.y >= sq->y && infos->cursor.y <= sq->y + sq->size))
-			return (1);
+		return (1);
 	return (0);
 }
 

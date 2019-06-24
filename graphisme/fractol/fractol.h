@@ -6,7 +6,7 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:31:13 by mribouch          #+#    #+#             */
-/*   Updated: 2019/06/21 15:17:10 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/24 15:06:30 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ typedef struct	s_square
 
 typedef struct	s_circle
 {
-	int 		x;
-	int 		y;
-	int 		d;
+	int			x;
+	int			y;
+	int			d;
 	int			r;
 }				t_circle;
 
@@ -172,6 +172,8 @@ double			ft_map2(t_mapjs map);
 void			ft_fullcircle(t_window *infos, t_point c
 					, int r, int color);
 void			ft_circle(t_window *infos, t_point c, int r, int color);
+void			ft_check_square(t_window *infos, t_slider *slide, t_square *sqw
+					, t_square *sqb);
 void			ft_init_square(t_square *sqw, t_square *sqb, t_slider *slide);
 void			ft_fill_square(t_window *infos, t_square s);
 void			ft_square(t_window *infos, t_square s);

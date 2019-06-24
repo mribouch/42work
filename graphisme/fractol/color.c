@@ -6,16 +6,12 @@
 /*   By: mribouch <mribouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:52:33 by mribouch          #+#    #+#             */
-/*   Updated: 2019/06/21 16:35:12 by mribouch         ###   ########.fr       */
+/*   Updated: 2019/06/24 14:41:49 by mribouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <math.h>
-
-
-
-#include <stdio.h>
 
 static t_hsv	ft_hsv_for_cid(t_window *infos, int i, t_mapjs map)
 {
@@ -93,13 +89,6 @@ int				ft_hsv2rgb(t_hsv hsv)
 	float	q;
 	float	t;
 
-	if (hsv.s == 0.0f)
-		return (ft_create_rgb(hsv.v, hsv.v, hsv.v));
-	if (hsv.s == 0 && hsv.v == 1)
-	{
-		printf("je suis bien enqna ?\n");
-		return (ft_create_rgb(255, 255, 255));
-	}
 	hsv.h = (hsv.h == 360) ? 0 : hsv.h / 60.0f;
 	i = (int)hsv.h;
 	f = hsv.h - i;
